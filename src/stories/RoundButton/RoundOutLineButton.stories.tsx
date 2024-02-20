@@ -3,7 +3,7 @@ import { ReactComponent as HeartIcon } from '../assets/heart.svg'
 import RoundOutLineButton from './RoundOutLineButton'
 
 export default {
-  title: 'ROUNDBUTTON/RoundOutLineButton',
+  title: 'BUTTON/ROUND/RoundOutLineButton',
   component: RoundOutLineButton,
   tags: ['autodocs'],
   decorators: [

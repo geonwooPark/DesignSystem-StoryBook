@@ -3,7 +3,7 @@ import { ReactComponent as HeartIcon } from '../assets/heart.svg'
 import PrimaryButton from './PrimaryButton'
 
 export default {
-  title: 'BUTTON/PrimaryButton',
+  title: 'BUTTON/SQUARE/PrimaryButton',
   component: PrimaryButton,
   tags: ['autodocs'],
   decorators: [

@@ -3,7 +3,7 @@ import { ReactComponent as HeartIcon } from '../assets/heart.svg'
 import OutLineButton from './OutLineButton'
 
 export default {
-  title: 'BUTTON/OutLineButton',
+  title: 'BUTTON/SQUARE/OutLineButton',
   component: OutLineButton,
   tags: ['autodocs'],
   decorators: [

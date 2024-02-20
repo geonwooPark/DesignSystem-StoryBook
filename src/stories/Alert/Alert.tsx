@@ -7,14 +7,20 @@ import { cva } from 'class-variance-authority'
 import { cn } from '../../utils/cn'
 
 interface AlertProps {
-  type: 'info' | 'success' | 'error'
-  isAlert: boolean
-  timer?: number | null
-  children: React.ReactNode
+  type: 'info' | 'success' | 'error' | null
+  position:
+    | 'topLeft'
+    | 'topRight'
+    | 'topCenter'
+    | 'bottomLeft'
+    | 'bottomRight'
+    | 'bottomCenter'
+  delay?: number
+  message: string
 }
 
 const AlertVariants = cva(
-  `flex h-[30px] w-[360px] items-center justify-between rounded-[3px] px-4 text-xs`,
+  `fixed z-50 flex h-[30px] w-[360px] items-center justify-between rounded-[3px] px-4 text-xs`,
   {
     variants: {
       type: {
@@ -22,38 +28,40 @@ const AlertVariants = cva(
         success: 'bg-[#F2F9F1] text-[#4A6D46]',
         error: 'bg-[#FAEEEE] text-[#743633]',
       },
+      position: {
+        topLeft: 'left-8 top-24',
+        topRight: 'right-8 top-24',
+        topCenter: 'left-[50%] top-24 translate-x-[-50%]',
+        bottomLeft: 'bottom-24 left-8',
+        bottomRight: 'bottom-24 right-8',
+        bottomCenter: 'bottom-24 left-[50%] translate-x-[-50%]',
+      },
     },
   },
 )
 
-function Alert({ type, isAlert, timer, children }: AlertProps) {
-  const [isOpen, setIsOpen] = useState(isAlert)
-
+function Alert({ type, position, delay = 3000, message }: AlertProps) {
+  const [isOpen, setIsOpen] = useState(Boolean(type))
   const onCancelClick = () => {
     setIsOpen(false)
   }
 
   useEffect(() => {
-    if (timer && isOpen) {
-      setTimeout(() => {
-        setIsOpen(false)
-      }, timer)
-    }
-  }, [timer, isOpen])
-
-  useEffect(() => {
-    setIsOpen(isAlert)
-  }, [isAlert])
+    const timer = setTimeout(() => {
+      setIsOpen(false)
+    }, delay)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
       {isOpen && (
-        <div className={cn(AlertVariants({ type }))}>
+        <div className={cn(AlertVariants({ type, position }))}>
           <div className="flex items-center gap-[5px]">
             {type === 'info' && <InfoIcon />}
             {type === 'success' && <CheckIcon />}
             {type === 'error' && <ErrorIcon />}
-            <span>{children}</span>
+            <span>{message}</span>
           </div>
           <div className="cursor-pointer" onClick={onCancelClick}>
             <CancelIcon />

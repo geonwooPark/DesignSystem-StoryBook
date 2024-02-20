@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Alert from './Alert'
-import SecondaryButton from '../Button/SecondaryButton'
-import PrimaryButton from '../Button/PrimaryButton'
 
 export default {
   title: 'ALERT/Alert',
@@ -19,75 +17,75 @@ export default {
 export const Example = {
   args: {
     type: 'info',
-    isAlert: true,
-    children: 'Alert Component',
+    delay: 60000,
+    message: 'Alert Component',
   },
 }
 
 export function Type() {
   return (
     <>
-      <Alert type="info" isAlert={true}>
-        Info Type Alert
-      </Alert>
-      <Alert type="success" isAlert={true}>
-        Success Type Alert
-      </Alert>
-      <Alert type="error" isAlert={true}>
-        Error Type Alert
-      </Alert>
+      <Alert
+        type="info"
+        delay={60000}
+        message="Info Type Alert"
+        position="topLeft"
+      />
+      <Alert
+        type="success"
+        delay={60000}
+        message="Success Type Alert"
+        position="topCenter"
+      />
+      <Alert
+        type="error"
+        delay={60000}
+        message="Error Type Alert"
+        position="topRight"
+      />
     </>
   )
 }
 
-export function Timer() {
-  const [isAlert, setIsAlert] = useState(true)
-  const [timer, setTimer] = useState<number | null>(null)
-
-  const onButtonClick = (timer: number) => {
-    setTimer(timer)
-    setTimeout(() => {
-      setIsAlert(false)
-    }, timer)
-  }
-
-  const onResetButtonClick = () => {
-    setTimer(null)
-    if (isAlert) return
-    setIsAlert(true)
-  }
-
+export function Display() {
   return (
     <>
-      <div className="flex gap-2">
-        <SecondaryButton
-          type="button"
-          size="sm"
-          label="1 second"
-          onClick={() => onButtonClick(1000)}
-        />
-        <SecondaryButton
-          type="button"
-          size="sm"
-          label="3 seconds"
-          onClick={() => onButtonClick(3000)}
-        />
-        <SecondaryButton
-          type="button"
-          size="sm"
-          label="5 seconds"
-          onClick={() => onButtonClick(5000)}
-        />
-        <PrimaryButton
-          type="button"
-          size="sm"
-          label="Reset"
-          onClick={onResetButtonClick}
-        />
-      </div>
-      <Alert type="info" isAlert={isAlert} timer={timer}>
-        Timer Alert
-      </Alert>
+      <Alert
+        type="info"
+        delay={60000}
+        message="Top Left Postion"
+        position="topLeft"
+      />
+      <Alert
+        type="info"
+        delay={60000}
+        message="Top Center Postion"
+        position="topRight"
+      />
+      <Alert
+        type="info"
+        delay={60000}
+        message="Top Center Postion"
+        position="topCenter"
+      />
+      <Alert
+        type="info"
+        delay={60000}
+        message="Bottom Left Postion"
+        position="bottomLeft"
+      />
+      <Alert
+        type="info"
+        delay={60000}
+        message="Bottom Right Postion"
+        position="bottomRight"
+      />
+      <Alert
+        type="info"
+        delay={60000}
+        message="Bottom Center Postion"
+        position="bottomCenter"
+      />
     </>
   )
 }

@@ -12,6 +12,13 @@ export default {
   title: 'DROPDOWN/DropDown',
   component: DropDown,
   tags: ['autodocs'],
+  decorators: [
+    (Story: any) => (
+      <div className="flex flex-col gap-[200px]">
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 export const Default = {
@@ -20,4 +27,13 @@ export const Default = {
     label: '선택하세요.',
     ItemList: ItemList,
   },
+}
+
+export function Size() {
+  return (
+    <>
+      <DropDown size="sm" label="DropDown Small" ItemList={ItemList} />
+      <DropDown size="lg" label="DropDown Large" ItemList={ItemList} />
+    </>
+  )
 }

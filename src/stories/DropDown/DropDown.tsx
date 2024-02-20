@@ -59,7 +59,7 @@ function DropDown({ size, label, ItemList, defaultValue }: DropDownProps) {
       {isOpen && (
         <div className={`${isOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
           <ul
-            className={`${animation ? 'translate-y-0' : 'translate-y-[calc(-100%-8px)]'} rounded-[3px] border border-gray duration-200`}
+            className={`${animation ? 'translate-y-0' : 'translate-y-[calc(-100%-8px)]'} relative z-50 rounded-[3px] border border-gray bg-white duration-200`}
           >
             {ItemList.map((item, i) => (
               <li

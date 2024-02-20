@@ -9,7 +9,12 @@ const ItemList = [
 ]
 
 function App() {
-  return <DropDown size="sm" ItemList={ItemList} label="선택하세요." />
+  return (
+    <div>
+      <DropDown size="sm" ItemList={ItemList} label="선택하세요." />
+      <DropDown size="lg" ItemList={ItemList} label="선택하세요." />
+    </div>
+  )
 }
 
 export default App

@@ -67,7 +67,7 @@ export function Open() {
   ]
   return (
     <>
-      <Accordion list={list} openTitle="title #1" />
+      <Accordion list={list} opendItem="title #1" />
     </>
   )
 }

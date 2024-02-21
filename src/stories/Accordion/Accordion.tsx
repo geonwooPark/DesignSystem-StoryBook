@@ -8,12 +8,12 @@ interface AccordianListType {
 
 interface AccordionProps {
   list: AccordianListType[]
-  openTitle?: string
+  opendItem?: string
 }
 
-function Accordion({ list, openTitle }: AccordionProps) {
+function Accordion({ list, opendItem }: AccordionProps) {
   const [animation, setAnimation] = useState(false)
-  const [selectedItem, setSelectedItem] = useState(openTitle || '')
+  const [selectedItem, setSelectedItem] = useState(opendItem || '')
 
   const onTitleClick = (title: string) => {
     if (selectedItem !== title) {

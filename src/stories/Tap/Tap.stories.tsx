@@ -61,7 +61,7 @@ const content4 = (
   </div>
 )
 
-const TapList = [
+const tapList = [
   { value: 'Tap1', content: content1 },
   { value: 'Tap2', content: content2 },
   { value: 'Tap3', content: content3 },
@@ -76,6 +76,6 @@ export default {
 
 export const Default = {
   args: {
-    TapList,
+    tapList,
   },
 }

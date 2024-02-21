@@ -2,11 +2,11 @@ import React, { PropsWithChildren, useState } from 'react'
 import { cn } from '../../utils/cn'
 
 interface TapProps {
-  TapList: { value: string; content: React.ReactNode }[]
+  tapList: { value: string; content: React.ReactNode }[]
 }
 
-function Tap({ TapList }: PropsWithChildren<TapProps>) {
-  const [currentTap, setCurrentTap] = useState(TapList[0].value)
+function Tap({ tapList }: PropsWithChildren<TapProps>) {
+  const [currentTap, setCurrentTap] = useState(tapList[0].value)
 
   const onClick = (selectedTap: string) => {
     setCurrentTap(selectedTap)
@@ -15,7 +15,7 @@ function Tap({ TapList }: PropsWithChildren<TapProps>) {
   return (
     <div>
       <div className="flex">
-        {TapList.map((item, i) => (
+        {tapList.map((item, i) => (
           <div
             key={i}
             onClick={() => onClick(item.value)}
@@ -28,7 +28,7 @@ function Tap({ TapList }: PropsWithChildren<TapProps>) {
         ))}
       </div>
       <div className="bg-slate-50">
-        {TapList.map((item, i) => (
+        {tapList.map((item, i) => (
           <div
             key={i}
             className={cn(`hidden ${currentTap === item.value && 'block'}`)}

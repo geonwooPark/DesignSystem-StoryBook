@@ -1,6 +1,6 @@
 import React from 'react'
 import LabelInputWithIcon from './LabelInputWithIcon'
-import { ReactComponent as EyeIcon } from '../assets/eye.svg'
+import { ReactComponent as EyeIcon } from '../../assets/eye.svg'
 
 export default {
   title: 'INPUT/LabelInputWithIcon',

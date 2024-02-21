@@ -1,0 +1,12 @@
+.github/
+.storybook/
+node_modules/
+public/
+tsconfig.json/
+.prettierrc
+.eslintrc
+.eslintignore
+build-storybook.log
+build/
+dist/stories/**/*.stories.js
+dist/stories/**/*.stories.d.ts

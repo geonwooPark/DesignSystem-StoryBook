@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ReactComponent as ArrowDown } from '../assets/arrow-down.svg'
+import { ReactComponent as ArrowDown } from '../../assets/arrow-down.svg'
 
 interface AccordianListType {
   title: string
@@ -40,7 +40,20 @@ function Accordion({ list, opendItem }: AccordionProps) {
             <span
               className={`${item.title === selectedItem ? 'rotate-180' : 'rotate-0'} duration-200`}
             >
-              <ArrowDown />
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 6L9 12L15 6"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </span>
           </div>
           {item.title === selectedItem && (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as HeartIcon } from '../assets/heart.svg'
+import { ReactComponent as HeartIcon } from '../../assets/heart.svg'
 import RoundOutLineButton from './RoundOutLineButton'
 
 export default {

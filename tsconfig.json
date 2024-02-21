@@ -1,3 +1,4 @@
+// tsconfig.js
 {
   "compilerOptions": {
     "target": "es5",
@@ -13,8 +14,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "noEmit": false, // 출력을 내보내지 않음
+    "declaration": true, // .d.ts 생성 여부 (타입스크립트 지원)
+    "outDir": "./dist" // tsc 명령어로 컴파일된 파일들의 위치
   },
-  "include": ["src"]
+  // tsc 명령어로 컴파일할 파일의 위치
+  "include": ["src", "./src/stories/*"]
 }

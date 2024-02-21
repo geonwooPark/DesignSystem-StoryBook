@@ -22,10 +22,10 @@ function Modal({
   isCancleBtn = false,
 }: ModalProps) {
   const { title, content, action } = modalData
-  const [showModal, setShowModal] = useState(isOpen)
+  const [isShowModal, setIsShowModal] = useState(isOpen)
 
   useEffect(() => {
-    setShowModal(isOpen)
+    setIsShowModal(isOpen)
   }, [isOpen])
 
   if (!isOpen) return null
@@ -36,7 +36,7 @@ function Modal({
       className="fixed inset-0 z-[100] flex h-screen w-screen items-center justify-center bg-black/30"
     >
       <div
-        className={`${showModal ? 'opacity-100' : 'opacity-0'} h-fit w-[280px] rounded-[3px] bg-white p-2.5 duration-200`}
+        className={`${isShowModal ? 'opacity-100' : 'opacity-0'} h-fit w-[280px] rounded-[3px] bg-white p-2.5 duration-200`}
         onClick={(e) => e.stopPropagation()}
       >
         <div>

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { ReactComponent as ArrowDown } from '../../assets/arrow-down.svg'
 
 interface DropDownProps {
   size: 'sm' | 'lg'
   label: string
-  ItemList: { value: string }[]
+  itemList: { value: string }[]
   defaultValue?: string
 }
 
-function DropDown({ size, label, ItemList, defaultValue }: DropDownProps) {
+function DropDown({ size, label, itemList, defaultValue }: DropDownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [animation, setAnimation] = useState(false)
   const [currentItem, setCurrentItem] = useState(defaultValue || '')
@@ -74,7 +73,7 @@ function DropDown({ size, label, ItemList, defaultValue }: DropDownProps) {
           <ul
             className={`${animation ? 'translate-y-0' : 'translate-y-[calc(-100%-8px)]'} relative z-50 rounded-[3px] border border-gray bg-white duration-200`}
           >
-            {ItemList.map((item, i) => (
+            {itemList.map((item, i) => (
               <li
                 key={i}
                 onClick={() => onItemClick(item.value)}

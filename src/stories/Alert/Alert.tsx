@@ -21,7 +21,7 @@ interface AlertProps {
 }
 
 const AlertVariants = cva(
-  `fixed z-50 flex h-[30px] w-[360px] items-center justify-between rounded-[3px] px-4 text-xs`,
+  `fixed z-50 flex h-[40px] w-[360px] items-center justify-between rounded-[3px] px-4 text-xs`,
   {
     variants: {
       type: {

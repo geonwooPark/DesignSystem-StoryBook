@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Alert from './Alert'
+import useAlertState from '../../hooks/useAlertState'
 
 export default {
   title: 'ALERT/Alert',
@@ -19,72 +20,106 @@ export const Example = {
     type: 'info',
     delay: 60000,
     message: 'Alert Component',
+    reset: () => null,
   },
 }
 
 export function Type() {
+  const {
+    infoAlertState,
+    resetInfoAlert,
+    successAlertState,
+    resetSuccessAlert,
+    errorAlertState,
+    resetErrorAlert,
+  } = useAlertState()
+
   return (
     <>
       <Alert
-        type="info"
+        type={infoAlertState.type}
         delay={60000}
-        message="Info Type Alert"
+        message={infoAlertState.message}
         position="topLeft"
+        reset={resetInfoAlert}
       />
       <Alert
-        type="success"
+        type={successAlertState.type}
         delay={60000}
-        message="Success Type Alert"
+        message={successAlertState.message}
         position="topCenter"
+        reset={resetSuccessAlert}
       />
       <Alert
-        type="error"
+        type={errorAlertState.type}
         delay={60000}
-        message="Error Type Alert"
+        message={errorAlertState.message}
         position="topRight"
+        reset={resetErrorAlert}
       />
     </>
   )
 }
 
 export function Display() {
+  const {
+    TopLeftAlertState,
+    resetTopLeftAlert,
+    TopRightAlertState,
+    resetTopRightAlert,
+    TopCenterAlertState,
+    resetTopCenterAlert,
+    BottomLeftAlertState,
+    resetBottomLeftAlert,
+    BottomRightAlertState,
+    resetBottomRightAlert,
+    BottomCenterAlertState,
+    resetBottomCenterAlert,
+  } = useAlertState()
+
   return (
     <>
       <Alert
-        type="info"
+        type={TopLeftAlertState.type}
         delay={60000}
-        message="Top Left Postion"
+        message={TopLeftAlertState.message}
         position="topLeft"
+        reset={resetTopLeftAlert}
       />
       <Alert
-        type="info"
+        type={TopRightAlertState.type}
         delay={60000}
-        message="Top Center Postion"
+        message={TopRightAlertState.message}
         position="topRight"
+        reset={resetTopRightAlert}
       />
       <Alert
-        type="info"
+        type={TopCenterAlertState.type}
         delay={60000}
-        message="Top Center Postion"
+        message={TopCenterAlertState.message}
         position="topCenter"
+        reset={resetTopCenterAlert}
       />
       <Alert
-        type="info"
+        type={BottomLeftAlertState.type}
         delay={60000}
-        message="Bottom Left Postion"
+        message={BottomLeftAlertState.message}
         position="bottomLeft"
+        reset={resetBottomLeftAlert}
       />
       <Alert
-        type="info"
+        type={BottomRightAlertState.type}
         delay={60000}
-        message="Bottom Right Postion"
+        message={BottomRightAlertState.message}
         position="bottomRight"
+        reset={resetBottomRightAlert}
       />
       <Alert
-        type="info"
+        type={BottomCenterAlertState.type}
         delay={60000}
-        message="Bottom Center Postion"
+        message={BottomCenterAlertState.message}
         position="bottomCenter"
+        reset={resetBottomCenterAlert}
       />
     </>
   )

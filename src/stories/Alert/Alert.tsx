@@ -17,6 +17,7 @@ interface AlertProps {
     | 'bottomCenter'
   delay?: number
   message: string
+  reset: () => void
 }
 
 const AlertVariants = cva(
@@ -40,18 +41,25 @@ const AlertVariants = cva(
   },
 )
 
-function Alert({ type, position, delay = 3000, message }: AlertProps) {
-  const [isOpen, setIsOpen] = useState(Boolean(type))
+function Alert({ type, position, delay = 3000, message, reset }: AlertProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
   const onCancelClick = () => {
     setIsOpen(false)
+    reset()
   }
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(false)
+      reset()
     }, delay)
     return () => clearTimeout(timer)
   }, [])
+
+  useEffect(() => {
+    setIsOpen(Boolean(type))
+  }, [type])
 
   return (
     <>

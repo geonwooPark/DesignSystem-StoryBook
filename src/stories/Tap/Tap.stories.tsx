@@ -41,7 +41,7 @@ const content3 = (
 )
 const content4 = (
   <div className="p-4">
-    <h1 className="mb-2 text-lg font-bold">Title3</h1>
+    <h1 className="mb-2 text-lg font-bold">Title4</h1>
     <p>
       Dummy Text...Dummy Text...Dummy Text...Dummy Text...Dummy Text...Dummy
       Text...Dummy Text...Dummy Text...Dummy Text...Dummy Text...Dummy

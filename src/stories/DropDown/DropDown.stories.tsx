@@ -21,7 +21,7 @@ export default {
   ],
 }
 
-export const Default = {
+export const Example = {
   args: {
     size: 'sm',
     label: '선택하세요.',

@@ -14,7 +14,7 @@ export default {
   ],
 }
 
-export const Default = {
+export const Example = {
   args: {
     type: 'primary',
     label: 'Bedge',

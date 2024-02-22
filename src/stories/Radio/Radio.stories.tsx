@@ -1,7 +1,7 @@
 import React from 'react'
 import Radio from './Radio'
 
-const list = [{ value: 'value1' }, { value: 'value2' }, { value: 'value3' }]
+const list = [{ label: 'value1' }, { label: 'value2' }, { label: 'value3' }]
 
 export default {
   title: 'RADIO/Radio',
@@ -9,7 +9,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export const Default = {
+export const Example = {
   args: {
     list,
     changeState: () => null,

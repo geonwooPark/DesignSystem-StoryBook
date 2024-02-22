@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export const Default = {
+export const Example = {
   args: {
     placeholder: '검색어를 입력하세요.',
     onSearchClick: () => null,

@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 
 type RadioProps =
   | {
-      list: { value: string }[]
-      changeState: (value: string) => void
+      list: { label: string }[]
+      changeState: (label: string) => void
       name: string
       register?: never
       defaultChecked?: string
     }
   | {
-      list: { value: string }[]
-      changeState: (value: string) => void
+      list: { label: string }[]
+      changeState: (label: string) => void
       name?: never
       register: any
       defaultChecked?: string
@@ -23,8 +23,8 @@ function Radio({
   register,
   defaultChecked,
 }: RadioProps) {
-  const onClick = (value: string) => {
-    changeState(value)
+  const onClick = (label: string) => {
+    changeState(label)
   }
 
   return (
@@ -32,17 +32,17 @@ function Radio({
       {list.map((item, i) => (
         <label key={i} className="flex cursor-pointer gap-[6px]">
           <input
-            defaultChecked={item.value === defaultChecked}
+            defaultChecked={item.label === defaultChecked}
             type="radio"
             name={name}
             className="peer hidden"
-            value={item.value}
-            onChange={() => onClick(item.value)}
+            value={item.label}
+            onChange={() => onClick(item.label)}
             {...register}
           />
           <div className="size-5 rounded-full border-4 border-gray duration-200 peer-checked:border-4 peer-checked:border-primary-main" />
           <div className="text-sm text-secondary-main duration-200 peer-checked:text-secondary-strong">
-            {item.value}
+            {item.label}
           </div>
         </label>
       ))}

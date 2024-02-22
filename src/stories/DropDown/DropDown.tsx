@@ -5,9 +5,16 @@ interface DropDownProps {
   label: string
   itemList: { value: string }[]
   defaultValue?: string
+  changeState: (item: string) => void
 }
 
-function DropDown({ size, label, itemList, defaultValue }: DropDownProps) {
+function DropDown({
+  size,
+  label,
+  itemList,
+  defaultValue,
+  changeState,
+}: DropDownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [animation, setAnimation] = useState(false)
   const [currentItem, setCurrentItem] = useState(defaultValue || '')
@@ -36,6 +43,7 @@ function DropDown({ size, label, itemList, defaultValue }: DropDownProps) {
 
   const onItemClick = (selectedItem: string) => {
     setCurrentItem(selectedItem)
+    changeState(selectedItem)
     setIsOpen(false)
   }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 type RadioProps =
   | {
@@ -40,7 +40,7 @@ function Radio({
             onChange={() => onClick(item.label)}
             {...register}
           />
-          <div className="size-5 rounded-full border-4 border-gray duration-200 peer-checked:border-4 peer-checked:border-primary-main" />
+          <div className="size-5 rounded-full border-4 border-grey duration-200 peer-checked:border-4 peer-checked:border-primary-main" />
           <div className="text-sm text-secondary-main duration-200 peer-checked:text-secondary-strong">
             {item.label}
           </div>

@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { ReactComponent as InfoIcon } from '../../assets/info.svg'
-import { ReactComponent as CheckIcon } from '../../assets/check.svg'
-import { ReactComponent as ErrorIcon } from '../../assets/error.svg'
-import { ReactComponent as CancelIcon } from '../../assets/cancel.svg'
 import { cva } from 'class-variance-authority'
 import { cn } from '../../utils/cn'
 

@@ -20,7 +20,7 @@ export default function LabelInput({
         {...register}
         {...otherProps}
         className={cn(
-          `h-[40px] w-full rounded-[3px] border border-gray px-4 text-sm font-medium outline-none ${className}`,
+          `h-[40px] w-full rounded-[3px] border border-grey px-4 text-sm font-medium outline-none ${className}`,
         )}
       />
     </label>

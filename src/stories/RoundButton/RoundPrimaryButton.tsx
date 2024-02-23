@@ -14,7 +14,7 @@ interface RoundPrimaryButtonProps {
 const RoundPrimaryButtonVariants = cva(
   `flex items-center justify-center rounded-full
  bg-primary-main text-white transition-all
-duration-200 hover:bg-primary-strong disabled:cursor-not-allowed disabled:bg-gray`,
+duration-200 hover:bg-primary-strong disabled:cursor-not-allowed disabled:bg-grey`,
   {
     variants: {
       size: {

@@ -53,7 +53,7 @@ function DropDown({
     >
       <div
         onClick={handleOpen}
-        className="relative z-10 mb-2 flex h-10 cursor-pointer items-center justify-between rounded-[3px] border border-gray bg-white px-4"
+        className="relative z-10 mb-2 flex h-10 cursor-pointer items-center justify-between rounded-[3px] border border-grey bg-white px-4"
       >
         <span>{currentItem || label}</span>
         <span
@@ -79,7 +79,7 @@ function DropDown({
       {isOpen && (
         <div className={`${isOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
           <ul
-            className={`${animation ? 'translate-y-0' : 'translate-y-[calc(-100%-8px)]'} relative z-50 rounded-[3px] border border-gray bg-white duration-200`}
+            className={`${animation ? 'translate-y-0' : 'translate-y-[calc(-100%-8px)]'} relative z-50 rounded-[3px] border border-grey bg-white duration-200`}
           >
             {itemList.map((item, i) => (
               <li

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { ReactComponent as ArrowDown } from '../../assets/arrow-down.svg'
 
 interface AccordianListType {
   title: string
@@ -29,7 +28,7 @@ function Accordion({ list, opendItem }: AccordionProps) {
   }, [selectedItem])
 
   return (
-    <div className="w-fit space-y-3 rounded-[3px] border border-gray p-3 transition-all duration-500">
+    <div className="w-fit space-y-3 rounded-[3px] border border-grey p-3 transition-all duration-500">
       {list.map((item, i) => (
         <div key={i}>
           <div

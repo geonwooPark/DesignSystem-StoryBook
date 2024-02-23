@@ -14,7 +14,7 @@ interface RoundSecondaryButtonProps {
 const RoundSecondaryButtonVariants = cva(
   `flex items-center justify-center rounded-full
  bg-secondary-main text-white transition-all
-duration-200 hover:bg-secondary-strong disabled:cursor-not-allowed disabled:bg-gray	`,
+duration-200 hover:bg-secondary-strong disabled:cursor-not-allowed disabled:bg-grey	`,
   {
     variants: {
       size: {

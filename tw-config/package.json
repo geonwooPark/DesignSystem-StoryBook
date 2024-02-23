@@ -1,0 +1,5 @@
+{
+  "name": "design-system-team94/preset",
+  "main": "preset.js",
+  "description": "프로젝트 root의 tailwind.config.js 파일의 presets 설정에 넣어주세요!"
+}

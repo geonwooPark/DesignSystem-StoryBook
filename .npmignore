@@ -4,9 +4,15 @@ node_modules/
 public/
 tsconfig.json/
 .prettierrc
-.eslintrc
+.eslintrc.js
 .eslintignore
 build-storybook.log
 build/
+dist/hooks/
 dist/stories/**/*.stories.js
 dist/stories/**/*.stories.d.ts
+postcss.config.js
+tailwind.config.js
+tsconfig.json
+webpack.config.js
+src/

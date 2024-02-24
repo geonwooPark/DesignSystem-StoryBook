@@ -36,7 +36,7 @@ module.exports = {
 
 > 📖 <a href='https://main--65d95b8c1722df69e575a89f.chromatic.com/'>스토리북 URL</a>
 
-<a style="color:yellowgreen" href='https://pale-romano-ced.notion.site/CI-CD-461dad517c2b437a88d9b93639b4df0e?pvs=4'>스토리북 CI / CD 적용기</a>
+<a style="color:yellowgreen" href='https://pale-romano-ced.notion.site/CI-CD-461dad517c2b437a88d9b93639b4df0e?pvs=4'>스토리북 CI / CD 적용하기</a>
 <br/>
 
 ## 🏷️ UI 디자인 (Figma)
@@ -56,6 +56,8 @@ module.exports = {
 > 📖 <a  href='https://www.npmjs.com/package/design-system-team94'>NPM URL</a>
 
 <a style="color:yellowgreen" href='https://pale-romano-ced.notion.site/NPM-c095801f25da481d8d75453ed4765315?pvs=4'>NPM 라이브러리 배포하기</a>
+
+<a style="color:yellowgreen" href='https://pale-romano-ced.notion.site/1186bb1cc51e47b389e176a902ebda93?pvs=4'>라이브러리 스타일 이슈 해결하기</a>
 <br/>
 
 ## 🐶 팀원 소개

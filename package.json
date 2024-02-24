@@ -1,6 +1,6 @@
 {
   "name": "design-system-team94",
-  "version": "0.2.26",
+  "version": "0.2.27",
   "description": "스토리북을 활용한 UI 디자인 시스템",
   "private": false,
   "main": "dist/stories/index.js",
@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_e179a203ab97700",
+    "chromatic": "npx chromatic --project-token=chpt_058b1986c801039",
     "prepare": "rm -rf dist && mkdir dist && tsc && npm run tailwind",
     "tailwind": "npx tailwindcss -o ./dist/index.css --minify"
   },

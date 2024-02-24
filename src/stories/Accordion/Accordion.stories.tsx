@@ -18,7 +18,7 @@ export const Example = {
             Text...Dummy Text...Dummy Text...Dummy Text...Dummy Text...Dummy
             Text...Dummy Text...Dummy Text...Dummy Text...Dummy Text...Dummy
             Text...Dummy Text...Dummy Text...Dummy Text...Dummy Text...Dummy
-            Text...Dummy Text...Dummy Text...
+            Text...Dummy Text...Dummy
           </p>
         ),
       },

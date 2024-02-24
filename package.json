@@ -16,8 +16,7 @@
   "dependencies": {
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.1",
-    "tailwind-safelist-generator": "^1.0.0"
+    "tailwind-merge": "^2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

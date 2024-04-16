@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { PropsWithChildren, useEffect, useState } from 'react'
 import { cn } from '../../utils/cn'
 
 interface TapProps {
@@ -7,10 +7,16 @@ interface TapProps {
 
 function Tap({ tapList }: PropsWithChildren<TapProps>) {
   const [currentTap, setCurrentTap] = useState(0)
+  const [animation, setAnimation] = useState(false)
 
   const onClick = (selectedTap: number) => {
+    setAnimation(true)
     setCurrentTap(selectedTap)
   }
+
+  useEffect(() => {
+    setAnimation(false)
+  }, [currentTap])
 
   return (
     <div>
@@ -33,7 +39,11 @@ function Tap({ tapList }: PropsWithChildren<TapProps>) {
             key={idx}
             className={cn(`hidden ${currentTap === idx && 'block'}`)}
           >
-            {item.content}
+            <div
+              className={`${animation ? 'opacity-0' : 'opacity-100'} duration-300`}
+            >
+              {item.content}
+            </div>
           </div>
         ))}
       </div>

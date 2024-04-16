@@ -20,33 +20,32 @@ type CheckBoxProps =
     }
 
 function CheckBox({ list, changeState, name, register }: CheckBoxProps) {
-  const [checkList, setCheckList] = useState(list)
+  const [checkList] = useState(list)
 
-  const onClick = (label: string) => {
-    const updatedCheckList = checkList.map((item) => {
-      if (item.label === label) {
+  const onClick = (idx: number) => {
+    const updatedCheckList = checkList.map((item, i) => {
+      if (i === idx) {
         item.isChecked = !item.isChecked
       }
       return item
     })
-    setCheckList(updatedCheckList)
     changeState(updatedCheckList)
   }
 
   return (
     <div className="flex gap-5">
-      {checkList.map((item, i) => (
-        <label key={i} className="relative flex cursor-pointer gap-[6px]">
+      {checkList.map((item, idx) => (
+        <label key={idx} className="relative flex cursor-pointer gap-[6px]">
           <input
             defaultChecked={item.isChecked}
             type="checkbox"
             name={name}
             className="peer hidden"
             value={item.label}
-            onChange={() => onClick(item.label)}
+            onChange={() => onClick(idx)}
             {...register}
           />
-          <div className="size-5 rounded-[2px] border-4 border-grey duration-200 peer-checked:border-4 peer-checked:border-primary-main"></div>
+          <div className="size-5 rounded-[2px] border-4 border-grey duration-200 peer-checked:border-4 peer-checked:border-primary-main" />
           <div className="absolute left-[2.5px] top-0 hidden peer-checked:block">
             <svg
               width="16"

@@ -6,21 +6,21 @@ interface TapProps {
 }
 
 function Tap({ tapList }: PropsWithChildren<TapProps>) {
-  const [currentTap, setCurrentTap] = useState(tapList[0].value)
+  const [currentTap, setCurrentTap] = useState(0)
 
-  const onClick = (selectedTap: string) => {
+  const onClick = (selectedTap: number) => {
     setCurrentTap(selectedTap)
   }
 
   return (
     <div>
-      <div className="flex">
-        {tapList.map((item, i) => (
+      <div className="flex bg-white">
+        {tapList.map((item, idx) => (
           <div
-            key={i}
-            onClick={() => onClick(item.value)}
+            key={idx}
+            onClick={() => onClick(idx)}
             className={cn(
-              `flex h-10 w-[100px] text-sm rounded-[3px] duration-200 text-secondary-main cursor-pointer items-center justify-center bg-white ${currentTap === item.value && 'bg-primary-light font-bold text-primary-main'}`,
+              `flex h-10 w-[100px] text-sm rounded-[3px] duration-200 text-secondary-main cursor-pointer items-center justify-center bg-white ${currentTap === idx && 'bg-primary-light font-bold text-primary-main'}`,
             )}
           >
             {item.value}
@@ -28,10 +28,10 @@ function Tap({ tapList }: PropsWithChildren<TapProps>) {
         ))}
       </div>
       <div className="bg-slate-50">
-        {tapList.map((item, i) => (
+        {tapList.map((item, idx) => (
           <div
-            key={i}
-            className={cn(`hidden ${currentTap === item.value && 'block'}`)}
+            key={idx}
+            className={cn(`hidden ${currentTap === idx && 'block'}`)}
           >
             {item.content}
           </div>

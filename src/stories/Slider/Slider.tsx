@@ -106,7 +106,7 @@ export default function Slider({
       childNodes[firstViewChildIndex + 1].offsetLeft
   }
 
-  const throttle = (callback: any, delay: number) => {
+  const throttle = useCallback((callback: any, delay: number) => {
     let throttled = false
     return (...args: any) => {
       if (!throttled) {
@@ -117,7 +117,7 @@ export default function Slider({
         }, delay)
       }
     }
-  }
+  }, [])
 
   const onThrottleDragMove = throttle(onDragMove, 50)
 
@@ -125,7 +125,7 @@ export default function Slider({
     <div className="relative w-full">
       <button
         onClick={onPrevButtonClick}
-        className="absolute left-[-12px] top-[50%] translate-y-[-55%] rounded-full bg-blue-600 p-2 text-white"
+        className="absolute left-[-12px] top-[50%] translate-y-[-55%] rounded-full bg-blue-600 p-2 text-white shadow-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@ export default function Slider({
       </div>
       <button
         onClick={onNextButtonClick}
-        className="absolute right-[-12px] top-[50%] translate-y-[-50%] rounded-full bg-blue-600 p-2 text-white"
+        className="absolute right-[-12px] top-[50%] translate-y-[-50%] rounded-full bg-blue-600 p-2 text-white shadow-md"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

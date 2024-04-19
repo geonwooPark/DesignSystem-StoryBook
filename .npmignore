@@ -9,8 +9,8 @@ tsconfig.json/
 build-storybook.log
 build/
 dist/hooks/
-dist/stories/**/*.stories.js
-dist/stories/**/*.stories.d.ts
+dist/Components/**/*.stories.js
+dist/Components/**/*.stories.d.ts
 dist/*.{js,ts,d.ts,css}
 postcss.config.js
 tailwind.config.js

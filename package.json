@@ -1,6 +1,6 @@
 {
   "name": "design-system-team94",
-  "version": "0.2.33",
+  "version": "0.2.34",
   "description": "스토리북을 활용한 UI 디자인 시스템",
   "private": false,
   "main": "dist/stories/index.js",

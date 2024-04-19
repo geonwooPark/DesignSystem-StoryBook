@@ -1,13 +1,10 @@
 import React from 'react'
-import Pagination from './Components/Pagination/Pagination'
 import { useNavigate } from 'react-router-dom'
 
 function App() {
   const navigate = useNavigate()
 
-  return (
-    <Pagination onNavigate={navigate} totalItemCount={16} listItemCount={5} />
-  )
+  return <div></div>
 }
 
 export default App

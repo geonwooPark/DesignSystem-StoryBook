@@ -8,6 +8,7 @@ interface InputWithIconProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string
 }
 
+/** 사용자가 텍스트나 다른 데이터를 입력할 수 있는 텍스트 상자 또는 입력 필드를 제공하는 인터페이스 요소로 아이콘을 포함하고 있음 */
 export default function InputWithIcon({
   register,
   icon,

@@ -10,6 +10,7 @@ interface AccordionProps {
   opendItem?: string
 }
 
+/** 사용자가 섹션을 열거나 닫을 수 있는 접히고 펼쳐지는 인터페이스 요소 */
 function Accordion({ list, opendItem }: AccordionProps) {
   const [animation, setAnimation] = useState(false)
   const [selectedItem, setSelectedItem] = useState(opendItem || '')

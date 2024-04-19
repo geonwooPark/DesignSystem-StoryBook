@@ -5,6 +5,7 @@ interface TapProps {
   tapList: { value: string; content: React.ReactNode }[]
 }
 
+/** 클릭 등의 상호작용을 감지하여 특정 섹션을 보여주는 동작을 수행하는 인터페이스 요소 */
 function Tap({ tapList }: PropsWithChildren<TapProps>) {
   const [currentTap, setCurrentTap] = useState(0)
   const [animation, setAnimation] = useState(false)

@@ -8,6 +8,7 @@ interface DropDownProps {
   changeState: (item: string) => void
 }
 
+/** 사용자가 선택할 수 있는 옵션 목록이 포함된 펼침식 인터페이스 요소 */
 function DropDown({
   size,
   label,

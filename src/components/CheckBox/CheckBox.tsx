@@ -19,6 +19,7 @@ type CheckBoxProps =
       register: any
     }
 
+/** 사용자가 선택할 수 있는 옵션을 나타내는 표시란으로, 선택 또는 선택 해제 상태를 나타내는 작은 상자 */
 function CheckBox({ list, changeState, name, register }: CheckBoxProps) {
   const [checkList] = useState(list)
 

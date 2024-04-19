@@ -19,6 +19,7 @@ const BadgeVariants = cva(
   },
 )
 
+/** 정보를 간결하게 나타내기 위해 작은 표식을 사용하는 인터페이스 요소 */
 function Badge({ type, label }: BadgeProps) {
   return <div className={cn(BadgeVariants({ type }))}>{label}</div>
 }

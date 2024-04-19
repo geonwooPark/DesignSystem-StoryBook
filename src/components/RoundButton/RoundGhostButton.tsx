@@ -36,6 +36,7 @@ const IconVariants = cva(`flex items-center`, {
   },
 })
 
+/** 투명한 배경에 테두리와 텍스트가 있는 라운드 버튼 */
 function RoundGhostButton({
   size,
   label,

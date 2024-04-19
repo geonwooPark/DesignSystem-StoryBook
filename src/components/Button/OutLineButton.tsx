@@ -36,6 +36,7 @@ const IconVariants = cva(`flex items-center`, {
   },
 })
 
+/** 투명한 내부를 갖고 외곽선에 색상이나 테두리를 가진 버튼 */
 function OutLineButton({ size, label, icon, ...props }: OutLineButtonProps) {
   return (
     <button {...props} className={cn(OutLineButtonVariants({ size }))}>

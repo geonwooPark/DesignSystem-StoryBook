@@ -36,6 +36,7 @@ const IconVariants = cva(`flex items-center`, {
   },
 })
 
+/** 주요 작업 또는 주요 동작을 나타내는 데 사용되는 라운드 버튼 */
 function RoundPrimaryButton({
   size,
   label,

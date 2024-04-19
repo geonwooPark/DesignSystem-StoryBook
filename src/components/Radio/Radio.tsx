@@ -16,6 +16,7 @@ type RadioProps =
       defaultChecked?: string
     }
 
+/** 여러 옵션 중 하나를 선택할 때 사용되며, 단일 선택이 가능한 버튼 형태의 인터페이스 요소 */
 function Radio({
   list,
   changeState,

@@ -14,6 +14,7 @@ export interface ModalProps {
   isCancleBtn?: boolean
 }
 
+/** 사용자의 주의를 요구하는 중요한 정보를 제공하거나 추가 작업을 위해 현재 작업 흐름을 일시적으로 중단시키는 팝업 스타일의 인터페이스 요소 */
 function Modal({
   isOpen,
   closeModal,

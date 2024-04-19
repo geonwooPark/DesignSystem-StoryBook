@@ -4,6 +4,7 @@ interface SearchBarProps extends InputHTMLAttributes<HTMLInputElement> {
   onSearchClick: (value: string) => void
 }
 
+/** 사용자가 검색어를 입력하고 검색을 수행할 수 있는 텍스트 입력 상자를 포함하는 인터페이스 요소 */
 function SearchBar({ onSearchClick, ...props }: SearchBarProps) {
   const [value, setValue] = useState('')
 

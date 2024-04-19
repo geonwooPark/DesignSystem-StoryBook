@@ -8,6 +8,7 @@ interface MyPagePaginationProps {
   sort?: string
 }
 
+/** 컨텐츠를 여러 페이지로 나누어 보여주고, 사용자가 페이지 간 이동할 수 있는 인터페이스 요소 */
 function Pagination({
   onNavigate,
   totalItemCount,

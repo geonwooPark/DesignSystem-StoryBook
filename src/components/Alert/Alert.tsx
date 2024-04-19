@@ -37,6 +37,7 @@ const AlertVariants = cva(
   },
 )
 
+/** 사용자에게 중요한 메시지를 강조하고 확인할 수 있도록 하는 팝업 형태의 인터페이스 요소 */
 function Alert({ type, position, delay = 3000, message, reset }: AlertProps) {
   const [isOpen, setIsOpen] = useState(false)
 

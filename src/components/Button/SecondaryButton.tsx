@@ -36,6 +36,7 @@ const IconVariants = cva(`flex items-center`, {
   },
 })
 
+/** 일반적으로 주요 작업이나 주요 동작이 아닌 경우에 사용되는 버튼으로, 일반 버튼보다 미세한 동작에 적합한 보조적 역할을 하는 인터페이스 요소 */
 function SecondaryButton({
   size,
   label,

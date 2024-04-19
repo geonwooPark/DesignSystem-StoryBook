@@ -4,6 +4,7 @@ interface SliderProps {
   gap: number
 }
 
+/** 클릭이나 드래그를 사용한 상호작용으로 수평으로 이동 가능한 바를 제공하는 인터페이스 요소 */
 export default function Slider({
   children,
   gap,

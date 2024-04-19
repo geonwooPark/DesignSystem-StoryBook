@@ -4,13 +4,13 @@ name: 'Chromatic Deployment'
 # Event for the workflow
 on:
   push:
-    branches: [main]
-    paths:
-      - '**.stories.tsx'
+    # branches: [main]
+    # paths:
+    #   - '**.stories.tsx'
   pull_request:
-    branches: [main]
-    paths:
-      - '**.stories.tsx'
+    # branches: [main]
+    # paths:
+    #   - '**.stories.tsx'
 
 # List of jobs
 jobs:

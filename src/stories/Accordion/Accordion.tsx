@@ -5,20 +5,22 @@ interface AccordionProps {
     title: string
     content: React.ReactNode
   }[]
-  opendItem?: string
+  defaultIndex?: number
 }
 
 /** 사용자가 섹션을 열거나 닫을 수 있는 접히고 펼쳐지는 인터페이스 요소 */
-function Accordion({ list, opendItem }: AccordionProps) {
+function Accordion({ list, defaultIndex }: AccordionProps) {
   const [animation, setAnimation] = useState(false)
-  const [selectedItem, setSelectedItem] = useState(opendItem || '')
+  const [selectedItem, setSelectedItem] = useState<number | null>(
+    typeof defaultIndex === 'number' ? defaultIndex : null,
+  )
 
-  const onTitleClick = (title: string) => {
-    if (selectedItem !== title) {
+  const onTitleClick = (idx: number) => {
+    if (selectedItem !== idx) {
       setAnimation(true)
-      setSelectedItem(title)
+      setSelectedItem(idx)
     } else {
-      setSelectedItem('')
+      setSelectedItem(null)
     }
   }
 
@@ -27,16 +29,16 @@ function Accordion({ list, opendItem }: AccordionProps) {
   }, [selectedItem])
 
   return (
-    <div className="w-fit space-y-3 rounded-[3px] border border-grey p-3 transition-all duration-500">
-      {list.map((item, i) => (
-        <div key={i}>
+    <div className="w-fit space-y-3 rounded-md border border-grey bg-white p-3 transition-all duration-200">
+      {list.map((item, itemIdx) => (
+        <div key={itemIdx}>
           <div
-            className="flex h-[40px] w-[360px] cursor-pointer items-center justify-between rounded-[3px] bg-primary-light px-3 text-[#3C6172]"
-            onClick={() => onTitleClick(item.title)}
+            className="flex h-[40px] w-[360px] cursor-pointer items-center justify-between rounded-sm bg-primary-light px-3 text-primary-strong"
+            onClick={() => onTitleClick(itemIdx)}
           >
             <span>{item.title}</span>
             <span
-              className={`${item.title === selectedItem ? 'rotate-180' : 'rotate-0'} duration-200`}
+              className={`${itemIdx === selectedItem ? 'rotate-180' : 'rotate-0'} duration-200`}
             >
               <svg
                 width="18"
@@ -54,7 +56,7 @@ function Accordion({ list, opendItem }: AccordionProps) {
               </svg>
             </span>
           </div>
-          {item.title === selectedItem && (
+          {itemIdx === selectedItem && (
             <div
               className={`${animation ? 'opacity-0' : 'opacity-100'} w-[360px] bg-white px-6 py-3 duration-200 `}
             >

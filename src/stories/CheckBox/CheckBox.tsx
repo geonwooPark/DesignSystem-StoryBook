@@ -1,20 +1,31 @@
 import React, { useState } from 'react'
 
-interface ListItemType {
-  label: string
-  isChecked: boolean
-}
-
 type CheckBoxProps =
   | {
-      list: ListItemType[]
-      changeState: (updatedCheckList: ListItemType[]) => void
+      list: {
+        label: string
+        isChecked: boolean
+      }[]
+      changeState: (
+        updatedCheckList: {
+          label: string
+          isChecked: boolean
+        }[],
+      ) => void
       name: string
       register?: never
     }
   | {
-      list: ListItemType[]
-      changeState: (updatedCheckList: ListItemType[]) => void
+      list: {
+        label: string
+        isChecked: boolean
+      }[]
+      changeState: (
+        updatedCheckList: {
+          label: string
+          isChecked: boolean
+        }[],
+      ) => void
       name?: never
       register: any
     }

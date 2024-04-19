@@ -13,6 +13,13 @@ module.exports = {
         },
         grey: '#A9A9A9',
       },
+      borderRadius: {
+        none: '0',
+        sm: '0.125rem',
+        md: '0.375rem',
+        lg: '0.625rem',
+        full: '9999px',
+      },
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

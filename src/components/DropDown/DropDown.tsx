@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
 interface DropDownProps {
-  size: 'sm' | 'lg'
   label: string
   itemList: { value: string }[]
   defaultValue?: string
@@ -10,7 +9,6 @@ interface DropDownProps {
 
 /** 사용자가 선택할 수 있는 옵션 목록이 포함된 펼침식 인터페이스 요소 */
 function DropDown({
-  size,
   label,
   itemList,
   defaultValue,
@@ -49,9 +47,7 @@ function DropDown({
   }
 
   return (
-    <div
-      className={`${size === 'sm' ? 'w-[160px]' : 'w-[320px]'} h-10 text-xs`}
-    >
+    <div className={`h-10 w-full text-xs`}>
       <div
         onClick={handleOpen}
         className="relative z-10 mb-2 flex h-10 cursor-pointer items-center justify-between rounded-[3px] border border-grey bg-white px-4"

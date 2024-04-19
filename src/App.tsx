@@ -1,5 +1,5 @@
 import React from 'react'
-import Pagination from './components/Pagination/Pagination'
+import Pagination from './Components/Pagination/Pagination'
 import { useNavigate } from 'react-router-dom'
 
 function App() {

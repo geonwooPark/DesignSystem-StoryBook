@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-interface AccordianListType {
-  title: string
-  content: React.ReactNode
-}
-
 interface AccordionProps {
-  list: AccordianListType[]
+  list: {
+    title: string
+    content: React.ReactNode
+  }[]
   opendItem?: string
 }
 

@@ -1,58 +1,44 @@
-import React, { useEffect, useState } from 'react'
+import React, { PropsWithChildren, useEffect, useState } from 'react'
 
 interface DropDownProps {
+  value: string | number | boolean
   label: string
-  itemList: { value: string }[]
-  defaultValue?: string
-  changeState: (item: string) => void
+  isOpen: boolean
+  handleOpen: () => void
 }
 
 /** 사용자가 선택할 수 있는 옵션 목록이 포함된 펼침식 인터페이스 요소 */
 function DropDown({
+  value,
   label,
-  itemList,
-  defaultValue,
-  changeState,
-}: DropDownProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [animation, setAnimation] = useState(false)
-  const [currentItem, setCurrentItem] = useState(defaultValue || '')
+  isOpen,
+  handleOpen,
+  children,
+}: PropsWithChildren<DropDownProps>) {
+  const [animation, setAnimation] = useState(isOpen)
 
   useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>
+    let timer: ReturnType<typeof setTimeout> | null = null
     if (isOpen) {
       setAnimation(true)
     } else {
-      setTimeout(() => setAnimation(false), 200)
+      timer = setTimeout(() => setAnimation(false), 200)
     }
 
     return () => {
-      clearTimeout(timer)
+      if (timer) {
+        clearTimeout(timer)
+      }
     }
   }, [isOpen])
-
-  const handleOpen = () => {
-    if (isOpen) {
-      setAnimation((prev) => !prev)
-      setTimeout(() => setIsOpen((prev) => !prev), 100)
-    } else {
-      setIsOpen((prev) => !prev)
-    }
-  }
-
-  const onItemClick = (selectedItem: string) => {
-    setCurrentItem(selectedItem)
-    changeState(selectedItem)
-    setIsOpen(false)
-  }
 
   return (
     <div className={`h-10 w-full text-xs`}>
       <div
         onClick={handleOpen}
-        className="relative z-10 mb-2 flex h-10 cursor-pointer items-center justify-between rounded-[3px] border border-grey bg-white px-4"
+        className="mb-2 flex h-10 cursor-pointer items-center justify-between rounded-md border border-grey bg-white px-4"
       >
-        <span>{currentItem || label}</span>
+        <span>{value || label}</span>
         <span
           className={`${isOpen ? 'rotate-180' : 'rotate-0'} text-black duration-200`}
         >
@@ -73,25 +59,11 @@ function DropDown({
         </span>
       </div>
 
-      {isOpen && (
-        <div className={`${isOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
-          <ul
-            className={`${animation ? 'translate-y-0' : 'translate-y-[calc(-100%-8px)]'} relative z-50 rounded-[3px] border border-grey bg-white duration-200`}
-          >
-            {itemList.map((item, i) => (
-              <li
-                key={i}
-                onClick={() => onItemClick(item.value)}
-                className="h-10 cursor-pointer p-[5px]"
-              >
-                <span className="flex h-[30px] w-full items-center rounded-[3px] bg-transparent px-[10px] duration-200 hover:bg-primary-light hover:text-primary-main">
-                  {item.value}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div
+        className={`${isOpen ? '[&>ul]:animate-slideFadeIn' : '[&>ul]:animate-slideFadeOut'} overflow-hidden`}
+      >
+        {animation && children}
+      </div>
     </div>
   )
 }

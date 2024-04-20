@@ -60,7 +60,7 @@ function CheckBox({ list, changeState, name, register }: CheckBoxProps) {
             onChange={() => onClick(listItemIdx)}
             {...register}
           />
-          <div className="size-5 rounded-[2px] border-4 border-grey duration-200 peer-checked:border-4 peer-checked:border-primary-main" />
+          <div className="size-5 rounded-sm border-4 border-grey duration-200 peer-checked:border-4 peer-checked:border-primary-main" />
           <div className="absolute left-[2.5px] top-0 hidden peer-checked:block">
             <svg
               width="16"

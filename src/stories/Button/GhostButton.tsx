@@ -12,7 +12,7 @@ interface GhostButtonProps {
 }
 
 const GhostButtonVariants = cva(
-  `flex items-center justify-center rounded-[3px] border border-primary-main
+  `flex items-center justify-center rounded-sm border border-primary-main
  bg-transparent text-primary-main transition-all
 duration-200 hover:border-primary-strong hover:text-primary-strong disabled:cursor-not-allowed disabled:border-grey disabled:text-grey`,
   {

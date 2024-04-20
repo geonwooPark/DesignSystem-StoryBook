@@ -12,7 +12,7 @@ interface PrimaryButtonProps {
 }
 
 const PrimaryButtonVariants = cva(
-  `flex items-center justify-center rounded-[3px]
+  `flex items-center justify-center rounded-sm
  bg-primary-main text-white transition-all
 duration-200 hover:bg-primary-strong disabled:cursor-not-allowed disabled:bg-grey`,
   {

@@ -27,7 +27,7 @@ function Tap({ tapList }: PropsWithChildren<TapProps>) {
             key={idx}
             onClick={() => onClick(idx)}
             className={cn(
-              `flex h-10 w-[100px] text-sm rounded-[3px] duration-200 text-secondary-main cursor-pointer items-center justify-center bg-white ${currentTap === idx && 'bg-primary-light font-bold text-primary-main'}`,
+              `flex h-10 w-[100px] text-sm rounded-sm duration-200 text-secondary-main cursor-pointer items-center justify-center bg-white ${currentTap === idx && 'bg-primary-light font-bold text-primary-main'}`,
             )}
           >
             {item.value}

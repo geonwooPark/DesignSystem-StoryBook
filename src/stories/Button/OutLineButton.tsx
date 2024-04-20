@@ -12,7 +12,7 @@ interface OutLineButtonProps {
 }
 
 const OutLineButtonVariants = cva(
-  `flex items-center justify-center rounded-[3px] border border-secondary-main
+  `flex items-center justify-center rounded-sm border border-secondary-main
  bg-white text-secondary-main transition-all
 duration-200 hover:border-secondary-strong hover:text-secondary-strong disabled:cursor-not-allowed disabled:border-grey disabled:text-grey`,
   {

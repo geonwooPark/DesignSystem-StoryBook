@@ -12,7 +12,7 @@ interface SecondaryButtonProps {
 }
 
 const SecondaryButtonVariants = cva(
-  `flex items-center justify-center rounded-[3px]
+  `flex items-center justify-center rounded-sm
  bg-secondary-main text-white transition-all
 duration-200 hover:bg-secondary-strong disabled:cursor-not-allowed disabled:bg-grey	`,
   {

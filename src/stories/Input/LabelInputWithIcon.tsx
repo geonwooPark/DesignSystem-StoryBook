@@ -27,7 +27,7 @@ export default function LabelInputWithIcon({
           {...register}
           {...otherProps}
           className={cn(
-            `h-[40px] w-full rounded-[3px] border border-grey pl-4 pr-8 text-sm font-medium outline-none ${className}`,
+            `h-[40px] w-full rounded-sm border border-grey pl-4 pr-8 text-sm font-medium outline-none ${className}`,
           )}
         />
         <div

@@ -2,7 +2,7 @@ import React from 'react'
 import Accordion from './Accordion'
 
 export default {
-  title: 'Components/Accordion',
+  title: 'COMPONENTS/Accordion',
   component: Accordion,
   tags: ['autodocs'],
 }

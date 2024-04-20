@@ -2,7 +2,7 @@ import React from 'react'
 import LabelInput from './LabelInput'
 
 export default {
-  title: 'Components/Input/LabelInput',
+  title: 'COMPONENTS/Input/LabelInput',
   component: LabelInput,
   tags: ['autodocs'],
 }

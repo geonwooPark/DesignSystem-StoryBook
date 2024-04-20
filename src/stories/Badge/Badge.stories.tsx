@@ -2,7 +2,7 @@ import React from 'react'
 import Badge from './Badge'
 
 export default {
-  title: 'Components/Badge',
+  title: 'COMPONENTS/Badge',
   component: Badge,
   tags: ['autodocs'],
   decorators: [

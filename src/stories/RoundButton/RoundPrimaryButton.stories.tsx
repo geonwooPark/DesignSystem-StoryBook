@@ -3,7 +3,7 @@ import { ReactComponent as HeartIcon } from '../../assets/heart.svg'
 import RoundPrimaryButton from './RoundPrimaryButton'
 
 export default {
-  title: 'Components/Button/RoundPrimaryButton',
+  title: 'COMPONENTS/Button/RoundPrimaryButton',
   component: RoundPrimaryButton,
   tags: ['autodocs'],
   decorators: [

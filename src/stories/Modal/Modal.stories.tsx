@@ -3,7 +3,7 @@ import Modal from './Modal'
 import useModalState from '../../hooks/useModalState'
 
 export default {
-  title: 'Components/Modal',
+  title: 'COMPONENTS/Modal',
   component: Modal,
   tags: ['autodocs'],
   decorators: [

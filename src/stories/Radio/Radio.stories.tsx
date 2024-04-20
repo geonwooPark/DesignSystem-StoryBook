@@ -4,7 +4,7 @@ import Radio from './Radio'
 const list = [{ label: 'value1' }, { label: 'value2' }, { label: 'value3' }]
 
 export default {
-  title: 'Components/Radio',
+  title: 'COMPONENTS/Radio',
   component: Radio,
   tags: ['autodocs'],
 }

@@ -3,7 +3,7 @@ import LabelInputWithIcon from './LabelInputWithIcon'
 import { ReactComponent as EyeIcon } from '../../assets/eye.svg'
 
 export default {
-  title: 'Components/Input/LabelInputWithIcon',
+  title: 'COMPONENTS/Input/LabelInputWithIcon',
   component: LabelInputWithIcon,
   tags: ['autodocs'],
 }

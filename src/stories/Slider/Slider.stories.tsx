@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from './Slider'
 
 export default {
-  title: 'Components/Slider',
+  title: 'COMPONENTS/Slider',
   component: Slider,
   tags: ['autodocs'],
 }

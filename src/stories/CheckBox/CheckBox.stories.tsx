@@ -10,7 +10,7 @@ const sampleList = [
 ]
 
 export default {
-  title: 'Components/CheckBox',
+  title: 'COMPONENTS/CheckBox',
   component: CheckBox,
   tags: ['autodocs'],
 }

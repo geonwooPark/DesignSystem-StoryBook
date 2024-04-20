@@ -2,7 +2,7 @@ import React from 'react'
 import Alert from './Alert'
 
 export default {
-  title: 'Components/Alert',
+  title: 'COMPONENTS/Alert',
   component: Alert,
   tags: ['autodocs'],
   decorators: [

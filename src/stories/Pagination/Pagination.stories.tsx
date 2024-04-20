@@ -2,7 +2,7 @@ import React from 'react'
 import Pagination from './Pagination'
 
 export default {
-  title: 'Components/Pagination',
+  title: 'COMPONENTS/Pagination',
   component: Pagination,
   tags: ['autodocs'],
 }

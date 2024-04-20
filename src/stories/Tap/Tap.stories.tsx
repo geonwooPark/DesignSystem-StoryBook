@@ -69,7 +69,7 @@ const tapList = [
 ]
 
 export default {
-  title: 'Components/Tap',
+  title: 'COMPONENTS/Tap',
   component: Tap,
   tags: ['autodocs'],
 }

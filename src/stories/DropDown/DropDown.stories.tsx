@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import DropDown from './DropDown'
 
 export default {
-  title: 'Components/DropDown',
+  title: 'COMPONENTS/DropDown',
   component: DropDown,
   tags: ['autodocs'],
 }

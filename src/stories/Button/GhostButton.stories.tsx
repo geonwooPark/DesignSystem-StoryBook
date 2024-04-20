@@ -3,7 +3,7 @@ import { ReactComponent as HeartIcon } from '../../assets/heart.svg'
 import GhostButton from './GhostButton'
 
 export default {
-  title: 'Components/Button/GhostButton',
+  title: 'COMPONENTS/Button/GhostButton',
   component: GhostButton,
   tags: ['autodocs'],
   decorators: [

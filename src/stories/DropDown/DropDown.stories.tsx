@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
 import DropDown from './DropDown'
 
-const itemList = [
-  { value: 'item1' },
-  { value: 'item2' },
-  { value: 'item3' },
-  { value: 'item4' },
-]
-
 export default {
   title: 'Components/DropDown',
   component: DropDown,

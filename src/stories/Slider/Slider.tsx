@@ -2,12 +2,14 @@ import React, { PropsWithChildren, useCallback, useRef, useState } from 'react'
 
 interface SliderProps {
   gap: number
+  step?: number
 }
 
 /** 클릭이나 드래그를 사용한 상호작용으로 수평으로 이동 가능한 바를 제공하는 인터페이스 요소 */
 export default function Slider({
   children,
   gap,
+  step = 1,
 }: PropsWithChildren<SliderProps>) {
   const slideContainer = useRef<HTMLDivElement>(null)
 
@@ -83,7 +85,9 @@ export default function Slider({
       Number.isInteger(slideContainer.current?.scrollLeft / (width + gap))
     ) {
       slideContainer.current.scrollLeft =
-        childNodes[firstViewChildIndex - 1].offsetLeft
+        firstViewChildIndex > step
+          ? childNodes[firstViewChildIndex - step].offsetLeft
+          : 0
     } else {
       slideContainer.current.scrollLeft =
         childNodes[firstViewChildIndex].offsetLeft
@@ -104,7 +108,9 @@ export default function Slider({
     )
 
     slideContainer.current.scrollLeft =
-      childNodes[firstViewChildIndex + 1].offsetLeft
+      firstViewChildIndex < step
+        ? childNodes[firstViewChildIndex + step].offsetLeft
+        : 9999
   }
 
   const throttle = useCallback((callback: any, delay: number) => {

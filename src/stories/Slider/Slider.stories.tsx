@@ -10,7 +10,7 @@ export default {
 export function Example() {
   return (
     <div className="w-[700px]">
-      <Slider gap={16}>
+      <Slider gap={16} step={3}>
         <div className="size-[200px] bg-red-600"></div>
         <div className="size-[200px] bg-blue-600"></div>
         <div className="size-[200px] bg-green-600"></div>

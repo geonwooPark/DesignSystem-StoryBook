@@ -60,7 +60,7 @@ function DropDown({
       </div>
 
       <div
-        className={`${isOpen ? '[&>ul]:animate-slideFadeIn' : '[&>ul]:animate-slideFadeOut'} overflow-hidden`}
+        className={`${isOpen ? '[&>ul]:animate-slideFadeIn' : '[&>ul]:animate-slideFadeOut'} z-popover relative overflow-hidden`}
       >
         {animation && children}
       </div>

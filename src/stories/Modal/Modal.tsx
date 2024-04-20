@@ -34,7 +34,7 @@ function Modal({
   return (
     <div
       onClick={closeModal}
-      className="fixed inset-0 z-[100] flex h-screen w-screen items-center justify-center bg-black/30"
+      className="z-dialog fixed inset-0 flex h-screen w-screen items-center justify-center bg-black/30"
     >
       <div
         className={`${isShowModal ? 'opacity-100' : 'opacity-0'} h-fit w-[280px] rounded-sm bg-white p-2.5 duration-200`}

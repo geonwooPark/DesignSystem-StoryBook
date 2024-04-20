@@ -20,5 +20,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    'tailwindcss/no-custom-classname': 0,
+  },
 }

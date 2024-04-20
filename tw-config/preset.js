@@ -20,6 +20,15 @@ module.exports = {
         lg: '10px',
         full: '9999px',
       },
+      zIndex: {
+        deep: '-1',
+        base: '1',
+        popover: '100',
+        sticky: '200',
+        overlay: '300',
+        dialog: '400',
+        notification: '500',
+      },
       keyframes: {
         slideFadeIn: {
           '0%': { transform: 'translateY(-100%)' },

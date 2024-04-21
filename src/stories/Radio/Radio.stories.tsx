@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Radio from './Radio'
 
-const list = [{ label: 'value1' }, { label: 'value2' }, { label: 'value3' }]
+const sampleList = [
+  { label: 'Radio #1' },
+  { label: 'Radio #2' },
+  { label: 'Radio #3' },
+  { label: 'Radio #4' },
+  { label: 'Radio #5' },
+]
 
 export default {
   title: 'COMPONENTS/Radio',
@@ -9,21 +15,37 @@ export default {
   tags: ['autodocs'],
 }
 
-export const Example = {
-  args: {
-    list,
-    changeState: () => null,
-    name: 'radio',
-  },
-}
+export function Example() {
+  const [selectedItem, setSelectedItem] = useState(0)
 
-export function DefaultChecked() {
+  const changeState = (itemIdx: number) => {
+    setSelectedItem(itemIdx)
+  }
+
   return (
     <Radio
-      list={list}
+      list={sampleList}
       name={'radio'}
-      changeState={() => null}
-      defaultChecked="value1"
+      changeState={changeState}
+      selectedItem={selectedItem}
+    />
+  )
+}
+
+export function VerticalRadio() {
+  const [selectedItem, setSelectedItem] = useState(0)
+
+  const changeState = (itemIdx: number) => {
+    setSelectedItem(itemIdx)
+  }
+
+  return (
+    <Radio
+      list={sampleList}
+      name={'radio'}
+      flexDirection="column"
+      changeState={changeState}
+      selectedItem={selectedItem}
     />
   )
 }

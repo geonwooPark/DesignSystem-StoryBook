@@ -109,8 +109,10 @@ export default function Slider({
       slideContainer.current?.scrollLeft / (width + gap),
     )
 
+    console.log(firstViewChildIndex + step)
+
     slideContainer.current.scrollLeft =
-      firstViewChildIndex < step
+      firstViewChildIndex + step < childNodes.length
         ? childNodes[firstViewChildIndex + step].offsetLeft
         : 9999
   }

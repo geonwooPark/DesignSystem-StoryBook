@@ -1,11 +1,16 @@
 import React, { useCallback, useState } from 'react'
 
 interface MyPagePaginationProps {
+  /** 페이지 이동을 위해 실행되는 함수를 설정 */
   onNavigate: (path: string) => void
+  /** 페이지로 나눌 전체 아이템 갯수를 설정 */
   totalItemCount: number
+  /** 한 페이지에 보여지는 아이템의 갯수를 설정 */
   listItemCount: number
+  /** 페이지네이션 UI에 한번에 보여지는 페이지 갯수를 설정 */
   numberingCount?: number
-  sort?: string
+  /** 페이지 외 필터, 정렬 등의 쿼리를 설정 */
+  queries?: Record<string, string>
 }
 
 /** 컨텐츠를 여러 페이지로 나누어 보여주고, 사용자가 페이지 간 이동할 수 있는 인터페이스 요소 */
@@ -13,7 +18,7 @@ function Pagination({
   onNavigate,
   totalItemCount,
   numberingCount = 3,
-  sort,
+  queries,
   listItemCount,
 }: MyPagePaginationProps) {
   const getParameterByName = useCallback((name: string) => {
@@ -33,6 +38,14 @@ function Pagination({
     return arr
   }, [])
 
+  const getQueries = useCallback((queries: Record<string, string>) => {
+    let result = ''
+    for (const key in queries) {
+      result += `&${key}=${queries[key]}`
+    }
+    return result
+  }, [])
+
   const currentPage = Number(getParameterByName('page'))
   const [page, setPage] = useState(currentPage || 1)
 
@@ -43,7 +56,7 @@ function Pagination({
       className="cursor-pointer"
       onClick={() => {
         setPage(i + 1)
-        onNavigate(`?page=${i + 1}${sort ? `&sort=${sort}` : ''}`)
+        onNavigate(`?page=${i + 1}${queries ? `${getQueries(queries)}` : ''}`)
       }}
     >
       <div
@@ -63,7 +76,9 @@ function Pagination({
         className="flex items-center"
         onClick={() => {
           setPage((prev) => prev - 1)
-          onNavigate(`?page=${page - 1}${sort ? `&sort=${sort}` : ''}`)
+          onNavigate(
+            `?page=${page - 1}${queries ? `${getQueries(queries)}` : ''}`,
+          )
         }}
       >
         <button
@@ -94,7 +109,9 @@ function Pagination({
         className="flex items-center"
         onClick={() => {
           setPage((prev) => prev + 1)
-          onNavigate(`?page=${page + 1}${sort ? `&sort=${sort}` : ''}`)
+          onNavigate(
+            `?page=${page + 1}${queries ? `${getQueries(queries)}` : ''}`,
+          )
         }}
       >
         <button

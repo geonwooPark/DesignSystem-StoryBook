@@ -25,11 +25,11 @@ export const Example = {
 
 export function DefaultChecked() {
   const checkedlist = [
-    { label: 'Box #1', isChecked: true },
-    { label: 'Box #2', isChecked: false },
-    { label: 'Box #3', isChecked: false },
-    { label: 'Box #4', isChecked: false },
-    { label: 'Box #5', isChecked: false },
+    { label: 'CheckBox #1', isChecked: true },
+    { label: 'CheckBox #2', isChecked: false },
+    { label: 'CheckBox #3', isChecked: false },
+    { label: 'CheckBox #4', isChecked: false },
+    { label: 'CheckBox #5', isChecked: false },
   ]
 
   return (

@@ -15,7 +15,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export function Example() {
+export function Default() {
   const [selectedItem, setSelectedItem] = useState(0)
 
   const changeState = (itemIdx: number) => {

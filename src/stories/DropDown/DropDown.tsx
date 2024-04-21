@@ -3,7 +3,9 @@ import React, { PropsWithChildren, useEffect, useState } from 'react'
 interface DropDownProps {
   value: string | number | boolean
   label: string
+  /** DropDown의 ON / OFF 상태를 설정  */
   isOpen: boolean
+  /** DropDown의 ON / OFF 상태를 컨트롤 할 수 있는 함수 */
   handleOpen: () => void
 }
 
@@ -60,7 +62,7 @@ function DropDown({
       </div>
 
       <div
-        className={`${isOpen ? '[&>ul]:animate-slideFadeIn' : '[&>ul]:animate-slideFadeOut'} z-popover relative overflow-hidden`}
+        className={`${isOpen ? '[&>ul]:animate-slideFadeIn' : '[&>ul]:animate-slideFadeOut'} relative z-popover overflow-hidden`}
       >
         {animation && children}
       </div>

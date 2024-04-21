@@ -5,6 +5,7 @@ interface AccordionProps {
     title: string
     content: React.ReactNode
   }[]
+  /** 기본적으로 활성화되어 있는 아이템을 설정  */
   defaultIndex?: number
 }
 

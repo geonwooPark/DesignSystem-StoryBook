@@ -6,6 +6,7 @@ interface RoundOutLineButtonProps {
   type: 'submit' | 'button'
   size: 'sm' | 'md' | 'lg'
   label: string
+  /** 아이콘은 svgr을 사용하여 불러와야 하며 컴포넌트 형태로 주입되야함 */
   icon?: React.ReactNode
   disabled?: boolean
   onClick?: () => void

@@ -15,7 +15,7 @@ export default {
   ],
 }
 
-export const Example = {
+export const Default = {
   args: {
     size: 'sm',
     label: 'Button',

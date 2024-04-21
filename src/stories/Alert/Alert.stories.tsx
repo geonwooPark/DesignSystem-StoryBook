@@ -14,7 +14,7 @@ export default {
   ],
 }
 
-export const Example = {
+export const Default = {
   args: {
     type: 'info',
     delay: 60000,

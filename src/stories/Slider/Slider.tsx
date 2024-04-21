@@ -3,7 +3,7 @@ import React, { PropsWithChildren, useCallback, useRef, useState } from 'react'
 interface SliderProps {
   /** 슬라이드 아이템 간의 간격을 설정 */
   gap: number
-  /** 버튼을 사용하여 슬라이드 조작 시 건너뛰는 아이템의 갯수를 설정 */
+  /** 버튼을 사용한 슬라이드 조작 시 건너뛰는 아이템의 갯수를 설정 */
   step?: number
 }
 

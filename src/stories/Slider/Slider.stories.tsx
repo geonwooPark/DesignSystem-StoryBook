@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export function Example() {
+export function Default() {
   return (
     <div className="w-[700px]">
       <Slider gap={16} step={2}>

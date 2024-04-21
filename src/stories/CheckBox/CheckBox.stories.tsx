@@ -15,7 +15,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export const Example = {
+export const Default = {
   args: {
     list: sampleList,
     changeState: () => null,
@@ -23,7 +23,7 @@ export const Example = {
   },
 }
 
-export function DefaultChecked() {
+export function Checked() {
   const checkedlist = [
     { label: 'CheckBox #1', isChecked: true },
     { label: 'CheckBox #2', isChecked: false },

@@ -14,17 +14,16 @@ export default {
   ],
 }
 
-export const Example = {
+export const Default = {
   args: {
     type: 'primary',
     label: 'Bedge',
   },
 }
 
-export function Type() {
+export function SecondaryBadge() {
   return (
     <>
-      <Badge type="primary" label="Primary Label" />
       <Badge type="secondary" label="Secondary Label" />
     </>
   )

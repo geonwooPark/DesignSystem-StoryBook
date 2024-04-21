@@ -74,7 +74,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export const Example = {
+export const Default = {
   args: {
     tapList,
   },

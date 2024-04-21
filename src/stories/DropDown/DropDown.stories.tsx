@@ -7,7 +7,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export function Example() {
+export function Default() {
   const [isOpen, setIsOpen] = useState(false)
   const [value, setValue] = useState('')
 

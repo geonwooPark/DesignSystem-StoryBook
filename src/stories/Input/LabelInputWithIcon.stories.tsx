@@ -8,7 +8,7 @@ export default {
   tags: ['autodocs'],
 }
 
-export const Example = {
+export const Default = {
   args: {
     placeholder: 'placeholder',
     icon: <EyeIcon />,

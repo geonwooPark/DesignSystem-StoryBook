@@ -9,24 +9,13 @@ export default {
 
 export function Default() {
   return (
-    <div className="w-[400px]">
-      <Slider gap={16} step={4}>
-        <div className="size-[200px] bg-red-200"></div>
-        <div className="size-[200px] bg-blue-200"></div>
-        <div className="size-[200px] bg-green-200"></div>
-        <div className="size-[200px] bg-pink-200"></div>
-        <div className="size-[200px] bg-purple-200"></div>
-        <div className="size-[200px] bg-yellow-200"></div>
-        <div className="size-[200px] bg-orange-200"></div>
-        <div className="size-[200px] bg-pink-200"></div>
-        <div className="size-[200px] bg-purple-200"></div>
-        <div className="size-[200px] bg-yellow-200"></div>
-        <div className="size-[200px] bg-orange-200"></div>
-        <div className="size-[200px] bg-orange-200"></div>
-        <div className="size-[200px] bg-pink-200"></div>
-        <div className="size-[200px] bg-purple-200"></div>
-        <div className="size-[200px] bg-yellow-200"></div>
-        <div className="size-[200px] bg-orange-200"></div>
+    <div className="w-[700px]">
+      <Slider gap={16}>
+        <div className="size-[200px] bg-red-400"></div>
+        <div className="size-[200px] bg-blue-400"></div>
+        <div className="size-[200px] bg-green-400"></div>
+        <div className="size-[200px] bg-pink-400"></div>
+        <div className="size-[200px] bg-purple-400"></div>
       </Slider>
     </div>
   )

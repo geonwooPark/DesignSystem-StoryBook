@@ -1,4 +1,5 @@
 import { create } from '@storybook/theming/create'
+import { colors } from '../tw-config/theme'
 
 export default create({
   base: 'light',
@@ -9,6 +10,6 @@ export default create({
   fontBase: 'Rubik, sans-serif',
   fontCode: 'monospace',
 
-  colorPrimary: '#4C8BFF',
-  colorSecondary: '#303030',
+  colorPrimary: colors.primary.main,
+  colorSecondary: colors.secondary.main,
 })

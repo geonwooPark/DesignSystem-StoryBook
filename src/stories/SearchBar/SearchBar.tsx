@@ -14,6 +14,7 @@ function SearchBar({ onSearchClick, ...props }: SearchBarProps) {
     } = event
     setValue(value)
   }
+
   return (
     <div className="relative h-12 w-[450px]">
       <input

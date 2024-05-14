@@ -18,13 +18,13 @@ interface SelectProps {
 
 type SelectContextState = {
   isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   value: string
   selectedItem: string | undefined
   triggerRef: React.RefObject<HTMLDivElement> | null
   listRef: React.RefObject<HTMLUListElement> | null
   focusedIndex: number | undefined
-  setValue: (item: string) => void
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+  openListWithKeyboard: KeyboardEventHandler<HTMLDivElement>
   selectItem: ({
     value,
     label,
@@ -47,13 +47,14 @@ export const SelectContext = createContext<SelectContextState>({
   listRef: null,
   focusedIndex: undefined,
   setIsOpen: () => null,
-  setValue: () => null,
+  openListWithKeyboard: () => null,
   selectItem: () => null,
   selectItemWithKeyboard: () => null,
 })
 
 export const focusStyle = `text-primary-main`
 
+/** 사용자가 리스트에서 옵션을 선택할 수 있도록 목록을 표시해주는 인터페이스 요소 */
 function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<string>()
@@ -61,6 +62,13 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
 
   const triggerRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
+
+  const openListWithKeyboard: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      setIsOpen(true)
+    }
+  }
 
   const selectItem = ({
     value,
@@ -132,6 +140,7 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
         focusedIndex,
         selectedItem,
         setIsOpen,
+        openListWithKeyboard,
         selectItem,
         selectItemWithKeyboard,
         ...props,

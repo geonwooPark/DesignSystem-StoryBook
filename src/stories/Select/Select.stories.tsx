@@ -19,11 +19,11 @@ export default {
 }
 
 export function Default() {
-  const [selectedItem, setSelectedItem] = useState('')
+  const [value, setValue] = useState('')
 
   return (
     <div className="w-[240px] text-sm">
-      <Select value={selectedItem} setValue={setSelectedItem}>
+      <Select value={value} setValue={setValue}>
         <Select.Label>레이블</Select.Label>
 
         <Select.Trigger>

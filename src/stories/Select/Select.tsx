@@ -1,4 +1,5 @@
 import React, {
+  KeyboardEventHandler,
   PropsWithChildren,
   createContext,
   useRef,
@@ -23,9 +24,19 @@ type SelectContextState = {
   triggerRef: React.RefObject<HTMLDivElement> | null
   listRef: React.RefObject<HTMLUListElement> | null
   focusedIndex: number | undefined
-  setFocusedIdx: React.Dispatch<React.SetStateAction<number | undefined>>
-  setSelectedItem: React.Dispatch<React.SetStateAction<string | undefined>>
   setValue: (item: string) => void
+  selectItem: ({
+    value,
+    label,
+    idx,
+    disabled,
+  }: {
+    value: string
+    label: string
+    idx: number
+    disabled?: boolean
+  }) => void
+  selectItemWithKeyboard: KeyboardEventHandler<HTMLLIElement>
 }
 
 export const SelectContext = createContext<SelectContextState>({
@@ -35,10 +46,10 @@ export const SelectContext = createContext<SelectContextState>({
   triggerRef: null,
   listRef: null,
   focusedIndex: undefined,
-  setFocusedIdx: () => null,
-  setSelectedItem: () => null,
   setIsOpen: () => null,
   setValue: () => null,
+  selectItem: () => null,
+  selectItemWithKeyboard: () => null,
 })
 
 export const focusStyle = `text-primary-main`
@@ -51,6 +62,67 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
   const triggerRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
 
+  const selectItem = ({
+    value,
+    label,
+    idx,
+    disabled,
+  }: {
+    value: string
+    label: string
+    idx: number
+    disabled?: boolean
+  }) => {
+    if (disabled) return
+    const { setValue } = props
+
+    setIsOpen(false)
+    setFocusedIdx(idx)
+    setSelectedItem(label)
+    setValue(value)
+  }
+
+  const selectItemWithKeyboard: KeyboardEventHandler<HTMLLIElement> = (e) => {
+    e.preventDefault()
+    const element = e.target as HTMLElement
+
+    if (e.key === 'Enter') {
+      selectItem({
+        value: element.dataset.value as string,
+        label: element.dataset.label as string,
+        idx: element.tabIndex,
+      })
+    }
+
+    if (e.key === 'ArrowDown') {
+      if (!element.nextSibling) return
+
+      let nextChildNode = element.nextSibling as HTMLElement | null
+      while (nextChildNode && nextChildNode.dataset.disabled === 'true') {
+        nextChildNode = nextChildNode.nextSibling as HTMLElement | null
+      }
+      if (nextChildNode) {
+        nextChildNode.focus()
+        nextChildNode.classList.add(focusStyle)
+        element.classList.remove(focusStyle)
+      }
+    }
+
+    if (e.key === 'ArrowUp') {
+      if (!element.previousSibling) return
+
+      let prevChildNode = element.previousSibling as HTMLElement | null
+      while (prevChildNode && prevChildNode.dataset.disabled === 'true') {
+        prevChildNode = prevChildNode.previousSibling as HTMLElement | null
+      }
+      if (prevChildNode) {
+        prevChildNode.focus()
+        prevChildNode.classList.add(focusStyle)
+        element.classList.remove(focusStyle)
+      }
+    }
+  }
+
   return (
     <SelectContext.Provider
       value={{
@@ -60,8 +132,8 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
         focusedIndex,
         selectedItem,
         setIsOpen,
-        setFocusedIdx,
-        setSelectedItem,
+        selectItem,
+        selectItemWithKeyboard,
         ...props,
       }}
     >

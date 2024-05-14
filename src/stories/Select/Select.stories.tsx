@@ -37,12 +37,7 @@ export function Default() {
 
         <Select.List>
           {list.map((item, idx) => (
-            <Select.Item
-              key={item.value}
-              idx={idx}
-              item={item}
-              disabled={item.disabled}
-            >
+            <Select.Item key={item.value} idx={idx} item={item}>
               <button className={`w-full px-3 py-2`}>{item.label}</button>
             </Select.Item>
           ))}

@@ -11,37 +11,42 @@ import SelectItem from './SelectItem'
 import SelectTriggerText from './SelectTriggerText'
 
 interface SelectProps {
-  selectedItem: string
-  setSelectedItem: (item: string) => void
+  value: string
+  setValue: (item: string) => void
 }
 
 type SelectContextState = {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  selectedItem: string
+  value: string
+  selectedItem: string | undefined
   triggerRef: React.RefObject<HTMLDivElement> | null
   listRef: React.RefObject<HTMLUListElement> | null
-  selectedIdx: number | undefined
-  setSelectedIdx: React.Dispatch<React.SetStateAction<number | undefined>>
-  setSelectedItem: (item: string) => void
+  focusedIndex: number | undefined
+  setFocusedIdx: React.Dispatch<React.SetStateAction<number | undefined>>
+  setSelectedItem: React.Dispatch<React.SetStateAction<string | undefined>>
+  setValue: (item: string) => void
 }
 
 export const SelectContext = createContext<SelectContextState>({
   isOpen: false,
+  value: '',
   selectedItem: '',
   triggerRef: null,
   listRef: null,
-  selectedIdx: undefined,
-  setSelectedIdx: () => null,
-  setIsOpen: () => null,
+  focusedIndex: undefined,
+  setFocusedIdx: () => null,
   setSelectedItem: () => null,
+  setIsOpen: () => null,
+  setValue: () => null,
 })
 
 export const focusStyle = `text-primary-main`
 
 function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedIdx, setSelectedIdx] = useState<number>()
+  const [selectedItem, setSelectedItem] = useState<string>()
+  const [focusedIndex, setFocusedIdx] = useState<number>()
 
   const triggerRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
@@ -50,11 +55,13 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
     <SelectContext.Provider
       value={{
         isOpen,
-        setIsOpen,
         triggerRef,
-        selectedIdx,
-        setSelectedIdx,
         listRef,
+        focusedIndex,
+        selectedItem,
+        setIsOpen,
+        setFocusedIdx,
+        setSelectedItem,
         ...props,
       }}
     >

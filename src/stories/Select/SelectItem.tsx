@@ -20,14 +20,16 @@ function SelectItem({
   item,
   disabled,
 }: PropsWithChildren<SelectItemProps>) {
-  const { setIsOpen, setSelectedItem, setSelectedIdx, listRef } =
+  const { setIsOpen, setValue, setFocusedIdx, setSelectedItem, listRef } =
     useContext(SelectContext)
 
   const selectItem = () => {
     if (disabled) return
+
     setIsOpen(false)
-    setSelectedIdx(idx)
-    setSelectedItem(item.value)
+    setFocusedIdx(idx)
+    setSelectedItem(item.label)
+    setValue(item.value)
   }
 
   const onKeyDown: KeyboardEventHandler<HTMLLIElement> = (e) => {

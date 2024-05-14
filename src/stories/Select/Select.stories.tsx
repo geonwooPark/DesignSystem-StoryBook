@@ -23,7 +23,7 @@ export function Default() {
 
   return (
     <div className="w-[240px] text-sm">
-      <Select selectedItem={selectedItem} setSelectedItem={setSelectedItem}>
+      <Select value={selectedItem} setValue={setSelectedItem}>
         <Select.Label>레이블</Select.Label>
 
         <Select.Trigger>

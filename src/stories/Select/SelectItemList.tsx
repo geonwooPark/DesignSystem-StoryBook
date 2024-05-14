@@ -3,12 +3,12 @@ import { SelectContext, focusStyle } from './Select'
 import useFadeAnimation from '../../hooks/useFadeAnimation'
 
 function SelectItemList({ children }: PropsWithChildren) {
-  const { isOpen, selectedIdx, listRef } = useContext(SelectContext)
+  const { isOpen, focusedIndex, listRef } = useContext(SelectContext)
   const { fade } = useFadeAnimation({ isOpen })
 
   useEffect(() => {
-    if (typeof selectedIdx !== 'undefined') {
-      const childNode = listRef?.current?.childNodes[selectedIdx] as Element
+    if (typeof focusedIndex !== 'undefined') {
+      const childNode = listRef?.current?.childNodes[focusedIndex] as Element
       if (childNode instanceof HTMLElement) {
         childNode.focus()
         childNode.classList.add(focusStyle)

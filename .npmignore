@@ -8,7 +8,6 @@ tsconfig.json/
 .eslintignore
 build-storybook.log
 build/
-dist/hooks/
 dist/stories/**/*.stories.js
 dist/stories/**/*.stories.d.ts
 dist/*.{js,ts,d.ts,css}

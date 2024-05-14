@@ -20,6 +20,6 @@
     "outDir": "./dist" // tsc 명령어로 컴파일된 파일들의 위치
   },
   // tsc 명령어로 컴파일할 파일의 위치
-  "include": ["src", "/src/assets/custom.d.ts"],
+  "include": ["src", "./src/assets/custom.d.ts"],
   "exclude": ["./src/assets"]
 }

@@ -10,22 +10,24 @@ import SelectTrigger from './SelectTrigger'
 import SelectItemList from './SelectItemList'
 import SelectItem from './SelectItem'
 import SelectTriggerText from './SelectTriggerText'
+import { focusStyle } from '../../contants'
+import { OptionList } from '../../types'
 
 interface SelectProps {
-  value: string
-  setValue: (item: string) => void
+  setValue: (value: string | undefined) => void
+  list: OptionList
 }
 
 type SelectContextState = {
   isOpen: boolean
-  value: string
   selectedItem: string | undefined
   triggerRef: React.RefObject<HTMLDivElement> | null
   listRef: React.RefObject<HTMLUListElement> | null
   focusedIndex: number | undefined
+  optionList: OptionList
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-  openListWithKeyboard: KeyboardEventHandler<HTMLDivElement>
-  selectItem: ({
+  onKeyboardTrigger: KeyboardEventHandler<HTMLDivElement>
+  onSelect: ({
     value,
     label,
     idx,
@@ -36,26 +38,26 @@ type SelectContextState = {
     idx: number
     disabled?: boolean
   }) => void
-  selectItemWithKeyboard: KeyboardEventHandler<HTMLLIElement>
+  onKeyboardSelect: KeyboardEventHandler<HTMLLIElement>
 }
 
 export const SelectContext = createContext<SelectContextState>({
   isOpen: false,
-  value: '',
   selectedItem: '',
   triggerRef: null,
   listRef: null,
   focusedIndex: undefined,
+  optionList: [],
   setIsOpen: () => null,
-  openListWithKeyboard: () => null,
-  selectItem: () => null,
-  selectItemWithKeyboard: () => null,
+  onKeyboardTrigger: () => null,
+  onSelect: () => null,
+  onKeyboardSelect: () => null,
 })
-
-export const focusStyle = `text-primary-main`
 
 /** 사용자가 리스트에서 옵션을 선택할 수 있도록 목록을 표시해주는 인터페이스 요소 */
 function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
+  const { setValue, list } = props
+
   const [isOpen, setIsOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<string>()
   const [focusedIndex, setFocusedIdx] = useState<number>()
@@ -63,14 +65,14 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
   const triggerRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLUListElement>(null)
 
-  const openListWithKeyboard: KeyboardEventHandler<HTMLDivElement> = (e) => {
+  const onKeyboardTrigger: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
       setIsOpen(true)
     }
   }
 
-  const selectItem = ({
+  const onSelect = ({
     value,
     label,
     idx,
@@ -82,7 +84,6 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
     disabled?: boolean
   }) => {
     if (disabled) return
-    const { setValue } = props
 
     setIsOpen(false)
     setFocusedIdx(idx)
@@ -90,12 +91,12 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
     setValue(value)
   }
 
-  const selectItemWithKeyboard: KeyboardEventHandler<HTMLLIElement> = (e) => {
+  const onKeyboardSelect: KeyboardEventHandler<HTMLLIElement> = (e) => {
     e.preventDefault()
     const element = e.target as HTMLElement
 
     if (e.key === 'Enter') {
-      selectItem({
+      onSelect({
         value: element.dataset.value as string,
         label: element.dataset.label as string,
         idx: element.tabIndex,
@@ -131,21 +132,21 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
     }
   }
 
+  const providerValue = {
+    isOpen,
+    triggerRef,
+    listRef,
+    focusedIndex,
+    selectedItem,
+    optionList: list,
+    setIsOpen,
+    onKeyboardTrigger,
+    onSelect,
+    onKeyboardSelect,
+  }
+
   return (
-    <SelectContext.Provider
-      value={{
-        isOpen,
-        triggerRef,
-        listRef,
-        focusedIndex,
-        selectedItem,
-        setIsOpen,
-        openListWithKeyboard,
-        selectItem,
-        selectItemWithKeyboard,
-        ...props,
-      }}
-    >
+    <SelectContext.Provider value={providerValue}>
       <div className="relative">{children}</div>
     </SelectContext.Provider>
   )

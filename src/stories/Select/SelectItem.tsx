@@ -15,7 +15,7 @@ function SelectItem({
   idx,
   item,
 }: PropsWithChildren<SelectItemProps>) {
-  const { selectItem, selectItemWithKeyboard } = useContext(SelectContext)
+  const { onSelect, onKeyboardSelect } = useContext(SelectContext)
 
   return (
     <li
@@ -25,9 +25,9 @@ function SelectItem({
       data-label={item.label}
       data-disabled={item.disabled}
       className={`${item.disabled ? 'text-gray-300' : 'hover:bg-primary-light'} outline-none`}
-      onKeyDown={selectItemWithKeyboard}
+      onKeyDown={onKeyboardSelect}
       onClick={() =>
-        selectItem({
+        onSelect({
           value: item.value,
           label: item.label,
           idx,

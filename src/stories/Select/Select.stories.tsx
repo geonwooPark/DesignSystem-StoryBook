@@ -19,11 +19,11 @@ export default {
 }
 
 export function Default() {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState<string>()
 
   return (
     <div className="w-[240px] text-sm">
-      <Select value={value} setValue={setValue}>
+      <Select value={value} setValue={setValue} list={list}>
         <Select.Label>레이블</Select.Label>
 
         <Select.Trigger>
@@ -36,11 +36,13 @@ export function Default() {
         </Select.Trigger>
 
         <Select.List>
-          {list.map((item, idx) => (
-            <Select.Item key={item.value} idx={idx} item={item}>
-              <button className={`w-full px-3 py-2`}>{item.label}</button>
-            </Select.Item>
-          ))}
+          {({ optionList }) =>
+            optionList.map((item, idx) => (
+              <Select.Item key={item.value} idx={idx} item={item}>
+                <button className={`w-full px-3 py-2`}>{item.label}</button>
+              </Select.Item>
+            ))
+          }
         </Select.List>
       </Select>
     </div>

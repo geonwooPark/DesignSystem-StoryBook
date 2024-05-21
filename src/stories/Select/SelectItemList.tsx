@@ -1,34 +1,16 @@
-import React, { PropsWithChildren, useContext, useEffect } from 'react'
-import { SelectContext, focusStyle } from './Select'
+import React, { useContext } from 'react'
+import { SelectContext } from './Select'
 import useFadeAnimation from '../../hooks/useFadeAnimation'
+import { OptionList } from '../../types'
 
-function SelectItemList({ children }: PropsWithChildren) {
-  const { isOpen, focusedIndex, listRef } = useContext(SelectContext)
-  const { fade } = useFadeAnimation({ isOpen })
+interface SelectItemListProps {
+  children: (props: { optionList: OptionList }) => React.ReactNode
+}
 
-  useEffect(() => {
-    if (typeof focusedIndex !== 'undefined') {
-      const childNode = listRef?.current?.childNodes[focusedIndex] as Element
-      if (childNode instanceof HTMLElement) {
-        childNode.focus()
-        childNode.classList.add(focusStyle)
-      }
-    } else {
-      const list = listRef?.current?.childNodes
-      if (!list) return
-
-      for (let i = 0; i < list?.length; i++) {
-        const node = list[i]
-        if (node instanceof HTMLElement) {
-          if (node.dataset.disabled !== 'true') {
-            node.focus()
-            node.classList.add(focusStyle)
-            break
-          }
-        }
-      }
-    }
-  }, [fade])
+function SelectItemList({ children }: SelectItemListProps) {
+  const { isOpen, focusedIndex, listRef, optionList } =
+    useContext(SelectContext)
+  const { fade } = useFadeAnimation({ isOpen, focusedIndex, listRef })
 
   return (
     <div
@@ -38,9 +20,9 @@ function SelectItemList({ children }: PropsWithChildren) {
         <ul
           role="list"
           ref={listRef}
-          className="mt-1 w-full overflow-hidden rounded-md border bg-white"
+          className="mt-1 max-h-[240px] w-full overflow-y-scroll rounded-md border bg-white"
         >
-          {children}
+          {children({ optionList })}
         </ul>
       )}
     </div>

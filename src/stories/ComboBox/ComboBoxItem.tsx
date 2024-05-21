@@ -1,8 +1,8 @@
 import React, { PropsWithChildren, useContext } from 'react'
-import { SelectContext } from './Select'
+import { ComboBoxContext } from './ComboBox'
 import { hoveredStyle, selectedStyle } from '../../contants'
 
-interface SelectItemProps {
+interface ComboBoxItemProps {
   idx: number
   item: {
     value: string
@@ -11,12 +11,12 @@ interface SelectItemProps {
   }
 }
 
-function SelectItem({
+function ComboBoxItem({
   children,
   idx,
   item,
-}: PropsWithChildren<SelectItemProps>) {
-  const { value, onSelect, onKeyboardSelect } = useContext(SelectContext)
+}: PropsWithChildren<ComboBoxItemProps>) {
+  const { value, onSelect, onKeyboardSelect } = useContext(ComboBoxContext)
 
   return (
     <li
@@ -40,4 +40,4 @@ function SelectItem({
   )
 }
 
-export default SelectItem
+export default ComboBoxItem

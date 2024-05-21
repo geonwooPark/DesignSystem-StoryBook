@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="w-[320px] text-sm">
-      <Select setValue={setValue} list={list}>
+      <Select value={value} setValue={setValue} list={list}>
         <Select.Label>셀렉트박스</Select.Label>
 
         <Select.Trigger>

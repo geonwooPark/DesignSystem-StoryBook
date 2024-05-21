@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useContext } from 'react'
 import { SelectContext } from './Select'
-import { hoveredStyle } from '../../contants'
+import { hoveredStyle, selectedStyle } from '../../contants'
 
 interface SelectItemProps {
   idx: number
@@ -16,7 +16,7 @@ function SelectItem({
   idx,
   item,
 }: PropsWithChildren<SelectItemProps>) {
-  const { onSelect, onKeyboardSelect } = useContext(SelectContext)
+  const { value, onSelect, onKeyboardSelect } = useContext(SelectContext)
 
   return (
     <li
@@ -25,13 +25,12 @@ function SelectItem({
       data-value={item.value}
       data-label={item.label}
       data-disabled={item.disabled}
-      className={`${item.disabled ? 'text-gray-300' : hoveredStyle} outline-none`}
+      className={`${value === item.value && selectedStyle} ${item.disabled ? 'text-gray-300' : hoveredStyle} outline-none`}
       onKeyDown={onKeyboardSelect}
       onClick={() =>
         onSelect({
           value: item.value,
           label: item.label,
-          idx,
           disabled: item.disabled,
         })
       }

@@ -23,7 +23,7 @@ export function Default() {
 
   return (
     <div className="w-[240px] text-sm">
-      <Select setValue={setValue} list={list}>
+      <Select value={value} setValue={setValue} list={list}>
         <Select.Label>레이블</Select.Label>
 
         <Select.Trigger>

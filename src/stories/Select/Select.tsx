@@ -14,11 +14,13 @@ import { focusedStyle } from '../../contants'
 import { OptionList } from '../../types'
 
 interface SelectProps {
+  value: string | undefined
   setValue: (value: string | undefined) => void
   list: OptionList
 }
 
 type SelectContextState = {
+  value: string | undefined
   isOpen: boolean
   selectedItem: string | undefined
   triggerRef: React.RefObject<HTMLDivElement> | null
@@ -30,18 +32,17 @@ type SelectContextState = {
   onSelect: ({
     value,
     label,
-    idx,
     disabled,
   }: {
     value: string
     label: string
-    idx: number
     disabled?: boolean
   }) => void
   onKeyboardSelect: KeyboardEventHandler<HTMLLIElement>
 }
 
 export const SelectContext = createContext<SelectContextState>({
+  value: '',
   isOpen: false,
   selectedItem: '',
   triggerRef: null,
@@ -56,7 +57,7 @@ export const SelectContext = createContext<SelectContextState>({
 
 /** 사용자가 리스트에서 옵션을 선택할 수 있도록 목록을 표시해주는 인터페이스 요소 */
 function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
-  const { setValue, list } = props
+  const { value, setValue, list } = props
 
   const [isOpen, setIsOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState<string>()
@@ -75,18 +76,18 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
   const onSelect = ({
     value,
     label,
-    idx,
     disabled,
   }: {
     value: string
     label: string
-    idx: number
     disabled?: boolean
   }) => {
     if (disabled) return
 
+    const findIdx = list.findIndex((item) => item.value === value)
+
     setIsOpen(false)
-    setFocusedIdx(idx)
+    setFocusedIdx(findIdx)
     setSelectedItem(label)
     setValue(value)
   }
@@ -99,7 +100,6 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
       onSelect({
         value: element.dataset.value as string,
         label: element.dataset.label as string,
-        idx: element.tabIndex,
       })
     }
 
@@ -133,6 +133,7 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
   }
 
   const providerValue = {
+    value,
     isOpen,
     triggerRef,
     listRef,

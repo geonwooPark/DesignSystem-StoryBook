@@ -10,7 +10,7 @@ import SelectTrigger from './SelectTrigger'
 import SelectItemList from './SelectItemList'
 import SelectItem from './SelectItem'
 import SelectTriggerText from './SelectTriggerText'
-import { focusStyle } from '../../contants'
+import { focusedStyle } from '../../contants'
 import { OptionList } from '../../types'
 
 interface SelectProps {
@@ -112,8 +112,8 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
       }
       if (nextChildNode) {
         nextChildNode.focus()
-        nextChildNode.classList.add(focusStyle)
-        element.classList.remove(focusStyle)
+        nextChildNode.classList.add(focusedStyle)
+        element.classList.remove(focusedStyle)
       }
     }
 
@@ -126,8 +126,8 @@ function Select({ children, ...props }: PropsWithChildren<SelectProps>) {
       }
       if (prevChildNode) {
         prevChildNode.focus()
-        prevChildNode.classList.add(focusStyle)
-        element.classList.remove(focusStyle)
+        prevChildNode.classList.add(focusedStyle)
+        element.classList.remove(focusedStyle)
       }
     }
   }

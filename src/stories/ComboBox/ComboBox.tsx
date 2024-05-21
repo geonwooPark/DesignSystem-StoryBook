@@ -10,7 +10,7 @@ import ComboBoxLabel from './ComboBoxLabel'
 import ComboBoxTrigger from './ComboBoxTrigger'
 import ComboBoxInput from './ComboBoxInput'
 import ComboBoxClearButton from './ComboBoxClearButton'
-import { focusStyle } from '../../contants'
+import { focusedStyle } from '../../contants'
 import ComboBoxItemList from './ComboBoxItemList'
 import { escapeRegExp } from '../../utils/escapeRegExp'
 import ComboBoxItem from './ComboBoxItem'
@@ -23,8 +23,8 @@ type ComboBoxProps = {
 }
 
 type ComboBoxContextState = {
-  isOpen: boolean
   value: string | undefined
+  isOpen: boolean
   keyword: string
   selectedItem: string | undefined
   triggerRef: React.RefObject<HTMLDivElement> | null
@@ -38,12 +38,10 @@ type ComboBoxContextState = {
   onSelect: ({
     value,
     label,
-    idx,
     disabled,
   }: {
     value: string
     label: string
-    idx: number
     disabled?: boolean
   }) => void
   onKeyboardTrigger: KeyboardEventHandler<HTMLDivElement>
@@ -51,8 +49,8 @@ type ComboBoxContextState = {
 }
 
 export const ComboBoxContext = createContext<ComboBoxContextState>({
-  isOpen: false,
   value: '',
+  isOpen: false,
   keyword: '',
   selectedItem: '',
   triggerRef: null,
@@ -100,6 +98,7 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
         return true
       }
     })
+    setOptionList(list)
   }
 
   const onClear = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -117,16 +116,35 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
       e.preventDefault()
       setIsOpen(true)
 
-      const list = listRef?.current?.childNodes
-      if (!list) return
+      const nodesList = listRef?.current?.childNodes
+      if (!nodesList) return
 
-      for (let i = 0; i < list?.length; i++) {
-        const node = list[i]
-        if (node instanceof HTMLElement) {
-          if (node.dataset.disabled !== 'true') {
-            node.focus()
-            node.classList.add(focusStyle)
-            break
+      if (nodesList.length === list.length) {
+        for (let i = 0; i < list?.length; i++) {
+          let node: ChildNode
+          if (typeof focusedIndex === 'undefined') {
+            node = nodesList[i]
+          } else {
+            node = nodesList[focusedIndex]
+          }
+
+          if (node instanceof HTMLElement) {
+            if (node.dataset.disabled !== 'true') {
+              node.focus()
+              node.classList.add(focusedStyle)
+              break
+            }
+          }
+        }
+      } else {
+        for (let i = 0; i < nodesList?.length; i++) {
+          const node = nodesList[i]
+          if (node instanceof HTMLElement) {
+            if (node.dataset.disabled !== 'true') {
+              node.focus()
+              node.classList.add(focusedStyle)
+              break
+            }
           }
         }
       }
@@ -136,22 +154,21 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
   const onSelect = ({
     value,
     label,
-    idx,
     disabled,
   }: {
     value: string
     label: string
-    idx: number
     disabled?: boolean
   }) => {
     if (disabled) return
-    const { setValue } = props
+
+    const findIdx = list.findIndex((item) => item.value === value)
 
     setIsOpen(false)
     setValue(value)
     setKeyword(label)
     setSelectedItem(label)
-    setFocusedIdx(idx)
+    setFocusedIdx(findIdx)
   }
 
   const onKeyboardSelect: KeyboardEventHandler<HTMLLIElement> = (e) => {
@@ -162,7 +179,6 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
       onSelect({
         value: element.dataset.value as string,
         label: element.dataset.label as string,
-        idx: element.tabIndex,
       })
     }
 
@@ -175,8 +191,8 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
       }
       if (nextChildNode) {
         nextChildNode.focus()
-        nextChildNode.classList.add(focusStyle)
-        element.classList.remove(focusStyle)
+        nextChildNode.classList.add(focusedStyle)
+        element.classList.remove(focusedStyle)
       }
     }
 
@@ -189,8 +205,8 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
       }
       if (prevChildNode) {
         prevChildNode.focus()
-        prevChildNode.classList.add(focusStyle)
-        element.classList.remove(focusStyle)
+        prevChildNode.classList.add(focusedStyle)
+        element.classList.remove(focusedStyle)
       }
     }
   }
@@ -221,9 +237,18 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
     return () => document.removeEventListener('click', onOutsideClick)
   }, [isOpen])
 
+  useEffect(() => {
+    if (!focusedIndex) return
+
+    const childNode = listRef?.current?.childNodes[focusedIndex] as HTMLElement
+    if (childNode instanceof HTMLElement) {
+      childNode.scrollIntoView()
+    }
+  }, [isOpen])
+
   const providerValue = {
-    isOpen,
     value,
+    isOpen,
     keyword,
     selectedItem,
     triggerRef,
@@ -238,6 +263,7 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
     onKeyboardTrigger,
     onKeyboardSelect,
   }
+
   return (
     <ComboBoxContext.Provider value={providerValue}>
       <div ref={containerRef} className="relative">

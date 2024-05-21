@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, useContext } from 'react'
 import { ComboBoxContext } from './ComboBox'
+import { hoveredStyle, selectedStyle } from '../../contants'
 
 interface ComboBoxItemProps {
   idx: number
@@ -15,7 +16,7 @@ function ComboBoxItem({
   idx,
   item,
 }: PropsWithChildren<ComboBoxItemProps>) {
-  const { onSelect, onKeyboardSelect } = useContext(ComboBoxContext)
+  const { value, onSelect, onKeyboardSelect } = useContext(ComboBoxContext)
 
   return (
     <li
@@ -24,13 +25,12 @@ function ComboBoxItem({
       data-value={item.value}
       data-label={item.label}
       data-disabled={item.disabled}
-      className={`${item.disabled ? 'text-gray-300' : 'hover:bg-primary-light'} outline-none`}
+      className={`${value === item.value && selectedStyle} ${item.disabled ? 'text-gray-300' : hoveredStyle} outline-none`}
       onKeyDown={onKeyboardSelect}
       onClick={() =>
         onSelect({
           value: item.value,
           label: item.label,
-          idx,
           disabled: item.disabled,
         })
       }

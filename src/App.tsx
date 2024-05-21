@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="w-[320px] text-sm">
-      <Select value={value} setValue={setValue}>
+      <Select setValue={setValue} list={list}>
         <Select.Label>셀렉트박스</Select.Label>
 
         <Select.Trigger>
@@ -43,11 +43,13 @@ function App() {
         </Select.Trigger>
 
         <Select.List>
-          {list.map((item, idx) => (
-            <Select.Item key={item.value} idx={idx} item={item}>
-              <button className={`w-full px-3 py-2`}>{item.label}</button>
-            </Select.Item>
-          ))}
+          {({ optionList }) =>
+            optionList.map((item, idx) => (
+              <Select.Item key={item.value} idx={idx} item={item}>
+                <button className={`w-full px-3 py-2`}>{item.label}</button>
+              </Select.Item>
+            ))
+          }
         </Select.List>
       </Select>
 

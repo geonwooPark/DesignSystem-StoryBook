@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { focusStyle } from '../contants'
+import { focusedStyle } from '../contants'
 
 type UseFadeAnimationParams = {
   isOpen: boolean
@@ -29,7 +29,7 @@ export default function useFadeAnimation({
       const childNode = listRef?.current?.childNodes[focusedIndex] as Element
       if (childNode instanceof HTMLElement) {
         childNode.focus()
-        childNode.classList.add(focusStyle)
+        childNode.classList.add(focusedStyle)
       }
     } else {
       const list = listRef?.current?.childNodes
@@ -40,7 +40,7 @@ export default function useFadeAnimation({
         if (node instanceof HTMLElement) {
           if (node.dataset.disabled !== 'true') {
             node.focus()
-            node.classList.add(focusStyle)
+            node.classList.add(focusedStyle)
             break
           }
         }

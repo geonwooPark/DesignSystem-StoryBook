@@ -112,6 +112,8 @@ function ComboBox({ children, ...props }: PropsWithChildren<ComboBoxProps>) {
   }
 
   const onKeyboardTrigger: KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.nativeEvent.isComposing) return
+
     if (e.key === 'ArrowDown') {
       e.preventDefault()
       setIsOpen(true)

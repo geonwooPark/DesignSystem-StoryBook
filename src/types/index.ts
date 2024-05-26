@@ -10,3 +10,17 @@ export type OptionList = (
       disabled: boolean
     }
 )[]
+
+export type ToolTipDirection =
+  | 'left'
+  | 'right'
+  | 'bottom'
+  | 'top'
+  | 'topLeft'
+  | 'topRight'
+  | 'bottomLeft'
+  | 'bottomRight'
+  | 'leftTop'
+  | 'leftBottom'
+  | 'rightTop'
+  | 'rightBottom'
